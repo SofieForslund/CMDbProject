@@ -16,10 +16,8 @@ namespace CMDBGrupp09.Repositories
         {
             this.apiClient = apiClient;
         }
-        public async Task<CMDbDto> GetMovieAsync(string movieID)
-        {
-            var result = await apiClient.GetAsync<CMDbDto>($"{baseEndpoint}/Movie/{movieID}");
-            return result;
-        }
+        public async Task<CMDbDto> GetMovieAsync(string movieID) => await apiClient.GetAsync<CMDbDto>($"{baseEndpoint}/Movie/{movieID}");
+
+        public async Task<IEnumerable<CMDbDto>> GetTop5MoviesAsync() => await apiClient.GetAsync<IEnumerable<CMDbDto>>($"{baseEndpoint}/Toplist?sort=desc&count=5&type=popularity");
     }
 }

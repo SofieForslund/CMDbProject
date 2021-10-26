@@ -29,13 +29,11 @@ namespace CMDBGrupp09.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var movie = await repoOMDb.GetMovieAsync(movieID);
-            var model = new HomeViewModel();
-            //{
-            //    Title = movie.Title,
-            //    Plot = movie.Plot
+            //var movie = await repoOMDb.GetMovieAsync(movieID);
+            var topList = await repoCMDb.GetTop5MoviesAsync();
 
-            //};
+            //var model = new HomeViewModel(movie);
+            var model = new HomeViewModel(topList);
             return View(model);
 
             //try

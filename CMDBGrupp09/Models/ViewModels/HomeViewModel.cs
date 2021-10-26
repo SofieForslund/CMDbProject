@@ -9,29 +9,32 @@ namespace CMDBGrupp09.Models.ViewModels
 {
     public class HomeViewModel
     {
-        //[DisplayFormat(DataFormatString = "{0:N0} st")]
-        //[DisplayName("Totalt bekräftade fall")]
         public string Title { get; }
-
-        //[DisplayFormat(DataFormatString = "{0:N0} st")]
-        //[DisplayName("Totalt bekräftade fall i Sverige")]
         public string Plot { get; }
+        public string Poster { get; }
 
         public HomeViewModel(OMDbDto omdb)
         {
             Title = omdb.Title;
             Plot = omdb.Plot;
+            Poster = omdb.Poster;
             //var query = omdb.
             //.Where(x => x.imdbID == "tt1853728")
             //.FirstOrDefault();
-
             //TotalConfirmedSweden = query.TotalConfirmed;
-
-
         }
-        public HomeViewModel()
+
+
+
+        private readonly string imdbID;
+
+        public HomeViewModel(IEnumerable<CMDbDto> topList)
         {
 
+            foreach (var movie in topList)
+            {
+                //OMDbRepo.GetMovieAsync(movie.imdbID);
+            }
         }
     }
 }
