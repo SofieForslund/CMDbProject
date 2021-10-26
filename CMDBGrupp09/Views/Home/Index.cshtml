@@ -1,62 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model HomeViewModel
 <div class="landing is-preload">
-    
 
-        <!-- Banner -->
-        <section id="banner">
-            <h2>CMDb</h2>
-            <p>Cineaste Movie Database</p>
-            <input type="text" id="searchBox" name="searchBox" placeholder="Search CMDb">
-            <ul class="actions special">
-                <li><a href="#" class="button primary">Search</a></li>
-            </ul>
-        </section>
 
-        <!-- Main -->
-        <section id="main" class="container">
+    <!-- Banner -->
+    <section id="banner">
+        <h2>CMDb</h2>
+        <p>Cineaste Movie Database</p>
+        <input type="text" id="searchBox" name="searchBox" placeholder="Search CMDb">
+        <ul class="actions special">
+            <li><a href="#" class="button primary">Search</a></li>
+        </ul>
+    </section>
 
-            <section class="box special">
-                <header class="major">
-                    <h2>Titel</h2>
-                    <p>Kort beskrivning/fakta</p>
-                </header>
-                <span class="image featured"><img src="images/mountain1.jpg" alt="" /></span>
-                <section class="box special features">
-                    <div class="features-row">
-                        <section>
-                            <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
-                            <h3>Titel</h3>
-                            <p>Beskrivning</p>
-                            <p>Rating</p>
-                        </section>
-                        <section>
-                            <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
-                            <h3>Titel</h3>
-                            <p>Beskrivning</p>
-                            <p>Rating</p>
-                        </section>
-                    </div>
-                    <div class="features-row">
-                        <section>
-                            <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
-                            <h3>Titel</h3>
-                            <p>Beskrivning</p>
-                            <p>Rating</p>
-                        </section>
-                        <section>
-                            <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
-                            <h3>Titel</h3>
-                            <p>Beskrivning</p>
-                            <p>Rating</p>
-                        </section>
-                    </div>
-                </section>
+    <!-- Main -->
+    <section id="main" class="container">
+
+        <section class="box special">
+            <header class="major">
+                <h2>@Html.DisplayNameFor(model => model.Title)</h2>
+                <p>@Html.DisplayNameFor(model => model.Plot)</p>
+            </header>
+            <span class="image featured"><img src="images/mountain1.jpg" alt="" /></span>
+            <section class="box special features">
+                <div class="features-row">
+                    <section>
+                        <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
+                        <h3>Titel</h3>
+                        <p>Beskrivning</p>
+                        <p>Rating</p>
+                    </section>
+                    <section>
+                        <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
+                        <h3>Titel</h3>
+                        <p>Beskrivning</p>
+                        <p>Rating</p>
+                    </section>
+                </div>
+                <div class="features-row">
+                    <section>
+                        <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
+                        <h3>Titel</h3>
+                        <p>Beskrivning</p>
+                        <p>Rating</p>
+                    </section>
+                    <section>
+                        <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
+                        <h3>Titel</h3>
+                        <p>Beskrivning</p>
+                        <p>Rating</p>
+                    </section>
+                </div>
             </section>
-
-
-
         </section>
-        
-    </div>
+
+
+
+    </section>
+
+</div>
