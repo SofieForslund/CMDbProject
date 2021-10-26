@@ -37,6 +37,7 @@
 
 	body {
 		line-height: 1;
+		background-color: black;
 	}
 
 	ol, ul {
@@ -52,10 +53,32 @@
 			content: none;
 		}
 
+#searchBox {
+	margin: auto;
+	color: grey;
+	max-width: 60%;
+	margin-bottom: 30px;
+}
+
+#thumbs {
+	display:flex;
+
+}
+
+#rating {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+.filmImage {
+	margin: 15px;
+}
+
 	table {
-		border-collapse: collapse;
-		border-spacing: 0;
-	}
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
 	body {
 		-webkit-text-size-adjust: none;
@@ -2884,10 +2907,13 @@
 
 	#page-wrapper {
 		padding-top: 3em;
+		color: black;
+		background:black;
 	}
 
-	body.landing #page-wrapper {
+	div.landing #page-wrapper {
 		padding-top: 0;
+		background-color: black;
 	}
 
 	@-moz-keyframes reveal-header {
@@ -3160,17 +3186,18 @@
 
 /* Banner */
 
-	#banner {
-		background-attachment: scroll,							fixed;
-		background-color: #666;
-		background-image: url("images/overlay.png"), url("../../images/banner.jpg");
-		background-position: top left,						center center;
-		background-repeat: repeat,							no-repeat;
-		background-size: auto,							cover;
-		color: #fff;
-		padding: 12em 0 20em 0;
-		text-align: center;
-	}
+#banner {
+	background-attachment: scroll, fixed;
+	background-color: #666;
+	background-image: url("../../images/cabinlogo.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto, cover;
+	object-fit: cover;
+	color: #fff;
+	padding: 12em 0 20em 0;
+	text-align: center;
+}
 
 		#banner :last-child {
 			margin-bottom: 0;
@@ -3249,7 +3276,7 @@
 				padding: 1em 0 1.25em 0;
 			}
 
-	body.landing #main {
+	div.landing #main {
 		margin-top: -14em;
 	}
 
@@ -3768,7 +3795,7 @@
 						padding-bottom: 1em;
 					}
 
-			body.landing #main {
+			div.landing #main {
 				padding: 0;
 				margin-top: 0;
 			}
