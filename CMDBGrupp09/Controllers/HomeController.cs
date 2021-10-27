@@ -13,6 +13,9 @@ namespace CMDBGrupp09.Controllers
 {
     public class HomeController : Controller
     {
+
+        string movieID = "tt1853728";
+
         private IRepoCMDb repoCMDb;
 
         public HomeController(IRepoCMDb repoCMDb)
@@ -25,39 +28,34 @@ namespace CMDBGrupp09.Controllers
         {
             this.repoOMDb = repoOMDb;
         }
-        string movieID = "tt1853728";
+
         public async Task<IActionResult> Index()
         {
+            try
+            {
+                var task1 = repoCMDb.GetTop5MoviesAsync();
+                var task2 = repoOMDb.GetMovieAsync(movieID);
 
-            //var movie = await repoOMDb.GetMovieAsync(movieID);
-            var topList = await repoCMDb.GetTop5MoviesAsync();
+                await Task.WhenAll(task1, task2);
 
-            //var model = new HomeViewModel(movie);
-            var model = new HomeViewModel(topList);
-            return View(model);
 
-            //try
-            //{
-            //    var task2 = repoCMDb.GetMovieAsync(movieID);
-            //    var task1 = repoOMDb.GetMovieAsync(movieID);
+                var topList = await task1;
+                var movie = await task2;
 
-            //    await Task.WhenAll(task1, task2);
 
-            //    var summary = await task1;
-            //    var countries2 = await task2;
+                var toplistModel = new HomeViewModel(topList);
+                var movieModel = new HomeViewModel(movie);
 
-            //    var model = new HomeViewModel(summary);
+                return View(toplistModel);
+            }
+            catch (System.Exception)
+            {
+                var model = new HomeViewModel();
+                ModelState.AddModelError(string.Empty, "Går icke");
+                return View(model);
+                throw;
+            }
 
-            //    // hantera resultatet
-            //    return View(model);
-            //}
-            //catch (System.Exception)
-            //{
-            //    var model = new HomeViewModel();
-            //    ModelState.AddModelError(string.Empty, "Fick inte kontakt med Covidstatistiken, visar istället gårdagens siffror");
-            //    return View(model);
-            //    throw;
-            //}
         }
 
     }

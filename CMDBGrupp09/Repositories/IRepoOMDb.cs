@@ -8,8 +8,6 @@ namespace CMDBGrupp09.Repositories
 {
    public interface IRepoOMDb
     {
-        //En metod som heter GetMovie? 
-
         Task<OMDbDto> GetMovieAsync(string movieID);
     }
 }

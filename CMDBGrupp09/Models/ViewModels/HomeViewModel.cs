@@ -12,16 +12,21 @@ namespace CMDBGrupp09.Models.ViewModels
         public string Title { get; }
         public string Plot { get; }
         public string Poster { get; }
+        public string IMDbRating { get; }
+        public string ImdbID { get; }
 
         public HomeViewModel(OMDbDto omdb)
         {
+
             Title = omdb.Title;
             Plot = omdb.Plot;
             Poster = omdb.Poster;
-            //var query = omdb.
-            //.Where(x => x.imdbID == "tt1853728")
-            //.FirstOrDefault();
-            //TotalConfirmedSweden = query.TotalConfirmed;
+            ImdbID = omdb.imdbID;
+
+            var query = omdb.Ratings
+            .Where(x => x.Source == "Internet Movie Database")
+            .FirstOrDefault();
+            IMDbRating = query.Value;
         }
 
 
@@ -33,8 +38,13 @@ namespace CMDBGrupp09.Models.ViewModels
 
             foreach (var movie in topList)
             {
-                //OMDbRepo.GetMovieAsync(movie.imdbID);
+                //OMDbRepo.GetMovieAsync(movie.imdbID); ??
             }
+        }
+
+        public HomeViewModel()
+        {
+
         }
     }
 }
