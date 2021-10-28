@@ -20,7 +20,7 @@ namespace CMDBGrupp09.Models.ViewModels
         public int numberOfLikes { get; set; }
         public int numberOfDislikes { get; set; }
 
-
+        public List<TotalMovieDto> TopList { get; set; }
 
 
 
@@ -49,14 +49,26 @@ namespace CMDBGrupp09.Models.ViewModels
                 {
                     if (movieListCmdb[i].imdbID == ImdbID)
                     {
-                        numberOfDislikes = movieListCmdb[i].numberOfDislikes;
-                        numberOfLikes = movieListCmdb[i].numberOfLikes;
-                    }
+                        TotalMovieDto movie3 = new TotalMovieDto()
+                        {
+                            Title = movieListOmdb[i].Title,
+                            Plot = movieListOmdb[i].Plot,
+                            Poster = movieListOmdb[i].Poster,
+                            ImdbID = movieListOmdb[i].imdbID,
+                            IMDbRating = movieListOmdb[i].Ratings[0].Value,
+                            numberOfDislikes = movieListCmdb[i].numberOfDislikes,
+                            numberOfLikes = movieListCmdb[i].numberOfLikes,
+
+                        }; 
+                        TopList.Add(movie3);
+                    }  
                 }
-
-
+              
+                
             }
-
+                
+            
+            
 
         }
     } 
