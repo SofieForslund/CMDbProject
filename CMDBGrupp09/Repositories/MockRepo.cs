@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CMDBGrupp09.Repositories
 {
-    public class MockRepo : IRepoOMDb
+    public class MockRepo //: IRepoOMDb
     {
         public async Task<OMDbDto> GetMovieAsync(string movieID)
         {

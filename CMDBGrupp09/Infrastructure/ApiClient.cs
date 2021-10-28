@@ -24,7 +24,7 @@ namespace CMDBGrupp09.Infrastructure
                     return data;
                 }
                
-                throw new Exception("Felaktigt api-anrop");
+                throw new Exception("Api-anropet funkar inte!");
 
             }
             catch (Exception)

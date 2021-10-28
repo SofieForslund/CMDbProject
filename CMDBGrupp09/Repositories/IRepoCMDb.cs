@@ -9,6 +9,6 @@ namespace CMDBGrupp09.Repositories
     public interface IRepoCMDb
     {
         Task<CMDbDto> GetMovieAsync(string movieID);
-        Task<IEnumerable<CMDbDto>> GetTop5MoviesAsync();
+        Task<List<CMDbDto>> GetTop5MoviesAsync();
     }
 }

@@ -9,5 +9,7 @@ namespace CMDBGrupp09.Repositories
    public interface IRepoOMDb
     {
         Task<OMDbDto> GetMovieAsync(string movieID);
+
+        Task<List<OMDbDto>> TopListMovies(List<CMDbDto> topList);
     }
 }

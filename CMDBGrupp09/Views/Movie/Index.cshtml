@@ -1,8 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿ @model CMDBGrupp09.Models.ViewModels.MovieViewModel
 
 <div class="is-preload">
 
@@ -10,18 +6,17 @@
     <!-- Main -->
     <section id="main" class="container">
         <header>
-            <h2>Titel</h2>
-            <p>year, runtime, genre, director</p>
+            <h2>@Html.DisplayFor(model => model.Title)</h2>
+            <p>@Html.DisplayFor(model => model.Year), @Html.DisplayFor(model => model.Runtime), @Html.DisplayFor(model => model.Genre), @Html.DisplayFor(model => model.Director)</p>
         </header>
         <div class="box">
-            <span class="image featured"><img src="images/mountain1.jpg" alt="" /></span>
-            <h3>Handling (plot)</h3>
-            <p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p>
-            <p>language</p>
+            <span class="image featured"><img src="@Html.DisplayFor(model => model.Poster)" alt="" /></span>
+            <h3>@Html.DisplayFor(model => model.Plot)</h3>
+            <p>@Html.DisplayFor(model => model.Language)</p>
             <div class="row">
                 <div class="row-6 row-12-mobilep">
                     <h3>Skådespelare</h3>
-                    <p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
+                    <p>@Html.DisplayFor(model => model.Actors)</p>
                 </div>
             </div>
 
@@ -35,33 +30,28 @@
 
             <section id="main" class="container">
                 <div class="row">
+
+                    <div class="col-4 col-12-narrower">
+                        <section class="box special">
+                            <h3>@Html.DisplayFor(model => model.Ratings[0].Source)</h3>
+                            <h2>@Html.DisplayFor(model => model.Ratings[0].Value)</h2>
+                        </section>
+                    </div>
+                    
+
                     <div class="col-4 col-12-narrower">
 
                         <section class="box special">
-                            <h3>Rating CMDb</h3>
-                            <ul class="actions special">
-                                <li><a href="#" class="button alt">Learn More</a></li>
-                            </ul>
+                            <h3>Rating CMDb (röster)</h3>
+                            <h2></h2>
                         </section>
 
                     </div>
                     <div class="col-4 col-12-narrower">
 
                         <section class="box special">
-                            <h3>Rating IMDb (ratings[0])</h3>
-                            <ul class="actions special">
-                                <li><a href="#" class="button alt">Learn More</a></li>
-                            </ul>
-                        </section>
-
-                    </div>
-                    <div class="col-4 col-12-narrower">
-
-                        <section class="box special">
-                            <h3>Rating popularitet</h3>
-                            <ul class="actions special">
-                                <li><a href="#" class="button alt">Learn More</a></li>
-                            </ul>
+                            <h3>Rating popularitet CMDb</h3>
+                            <h2></h2>
                         </section>
 
                     </div>

@@ -13,40 +13,29 @@ namespace CMDBGrupp09.Controllers
 {
     public class HomeController : Controller
     {
-
-        string movieID = "tt1853728";
-
+        
+        private IRepoOMDb repoOMDb;
         private IRepoCMDb repoCMDb;
 
-        public HomeController(IRepoCMDb repoCMDb)
+        public HomeController(IRepoOMDb repoOMDb, IRepoCMDb repoCMDb)
         {
-            this.repoCMDb = repoCMDb;
-        }
-        private IRepoOMDb repoOMDb;
 
-        public HomeController(IRepoOMDb repoOMDb)
-        {
             this.repoOMDb = repoOMDb;
+            this.repoCMDb = repoCMDb;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var task1 = repoCMDb.GetTop5MoviesAsync();
-                var task2 = repoOMDb.GetMovieAsync(movieID);
-
-                await Task.WhenAll(task1, task2);
+                var topListCmdb = await repoCMDb.GetTop5MoviesAsync(); 
+                var omdbList = await repoOMDb.TopListMovies(topListCmdb); 
 
 
-                var topList = await task1;
-                var movie = await task2;
 
+                var model = new HomeViewModel(omdbList, topListCmdb);
+                return View(model);
 
-                var toplistModel = new HomeViewModel(topList);
-                var movieModel = new HomeViewModel(movie);
-
-                return View(toplistModel);
             }
             catch (System.Exception)
             {
@@ -58,5 +47,6 @@ namespace CMDBGrupp09.Controllers
 
         }
 
+        }
     }
-}
+
