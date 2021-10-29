@@ -10,5 +10,6 @@ namespace CMDBGrupp09.Repositories
     {
         Task<CMDbDto> GetMovieAsync(string movieID);
         Task<List<CMDbDto>> GetTop5MoviesAsync();
+        Task<CMDbDto> LikeMovieAsync(string movieID);
     }
 }

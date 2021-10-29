@@ -53,11 +53,12 @@
 			content: none;
 		}
 
-
-		#fullPlot{
-			display: flex;
-			display : none;
-		}
+#subString, #fullPlot, #dots, #expand {
+	display : flex;
+}
+#fullPlot {
+	display: none;
+}
 
 #searchBox {
 	margin: auto;

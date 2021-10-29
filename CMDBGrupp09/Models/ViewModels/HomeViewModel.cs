@@ -32,51 +32,52 @@ namespace CMDBGrupp09.Models.ViewModels
         }
         public HomeViewModel(List<OMDbDto> movieListOmdb, List<CMDbDto> movieListCmdb)
         {
-            var i = 0;
-
-
-
-            foreach (var movie in movieListCmdb)
+            foreach (var movieCmdb in movieListCmdb)
             {
-                var i2 = 0;
-
-
-
-                foreach (var movie2 in movieListOmdb)
+                foreach (var movieOmdb in movieListOmdb)
                 {
-                    var query = movieListOmdb[i].Ratings
+                    var query = movieOmdb.Ratings
                     .Where(x => x.Source == "Internet Movie Database")
                     .FirstOrDefault();
 
-                    if (movieListCmdb[i].imdbID == movieListOmdb[i2].imdbID)
+                    if (movieCmdb.imdbID == movieOmdb.imdbID)
                     {
-                        TotalMovieDto movie3 = new TotalMovieDto()
+                        if (movieOmdb.Plot.Length < 10)
                         {
+                            TotalMovieDto completeMovie = new TotalMovieDto()
+                            {
+                                Title = movieOmdb.Title,
+                                Plot = movieOmdb.Plot,
+                                Poster = movieOmdb.Poster,
+                                ImdbID = movieOmdb.imdbID,
+                                Shortplot = "N/A",
+                                IMDbRating = query.Value,
+                                numberOfDislikes = movieCmdb.numberOfDislikes,
+                                numberOfLikes = movieCmdb.numberOfLikes
+                            };
+                            TopList.Add(completeMovie);
+                            break;
+                        }
+                        else
+                        {
+                            TotalMovieDto completeMovie = new TotalMovieDto()
+                            {
+                                Title = movieOmdb.Title,
+                                Plot = movieOmdb.Plot,
+                                Poster = movieOmdb.Poster,
+                                ImdbID = movieOmdb.imdbID,
+                                Shortplot = movieOmdb.Plot.Substring(0,20),
+                                IMDbRating = query.Value,
+                                numberOfDislikes = movieCmdb.numberOfDislikes,
+                                numberOfLikes = movieCmdb.numberOfLikes
+                            };
+                            TopList.Add(completeMovie);
+                            break;
+                        }
 
-                            Title = movieListOmdb[i2].Title,
-                            Plot = movieListOmdb[i2].Plot,
-                            Poster = movieListOmdb[i2].Poster,
-                            ImdbID = movieListOmdb[i2].imdbID,
-                            IMDbRating = query.Value,
-                            numberOfDislikes = movieListCmdb[i].numberOfDislikes,
-                            numberOfLikes = movieListCmdb[i].numberOfLikes,
-                            Shortplot = movieListOmdb[i2].Plot.Substring(0,101)
-
-                        }; 
-                        TopList.Add(movie3);
-                        
                     }
-                    i2++;
-                    
-                }
-                i++;
-
+                } 
             }
-
-
-
-
-
         }
     } 
 } 

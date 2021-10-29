@@ -15,13 +15,18 @@ namespace CMDBGrupp09.Repositories
         {
             await Task.Delay(0);
             return GetTestData<OMDbDto>("Django.json");
-            
         }
 
         public async Task<List<CMDbDto>> GetTop5MoviesAsync()
         {
             await Task.Delay(0);
             return GetTestData<List<CMDbDto>>("toplistCMDB.json");
+        }
+
+        public async Task<CMDbDto> LikeMovieAsync(string movieID)
+        {
+            await Task.Delay(0);
+            return GetTestData<CMDbDto>("Django.json");
         }
 
         private readonly string basePath;
