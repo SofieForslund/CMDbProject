@@ -17,18 +17,18 @@
 
         <section class="box special">
             <header class="major">
-                <h2>@Html.DisplayFor(model => model.Title)</h2>
-                <p>@Html.DisplayFor(model => model.Plot)</p>
-                <p>@Html.DisplayFor(model => model.IMDbRating)</p>
+                <h2>@Html.DisplayFor(model => model.TopList[0].Title)</h2>
+                <p>@Html.DisplayFor(model => model.TopList[0].Plot)</p>
+                <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating)</p>
             </header>
-            <span class="image featured"><a asp-controller="Movie" asp-action="Index"><img src=@Html.DisplayFor(model => model.Poster) alt="" /></a></span>
+            <span class="image featured"><a asp-controller="Movie" asp-action="Index"><img src=@Html.DisplayFor(model => model.TopList[0].Poster) alt="" /></a></span>
                 <section class="box special features">
                     @*<div class="features-row">*@
                     <section>
                         @for (var i = 1; i < 5; i++)
                         {
                         <div>
-                            <img class="filmImage" src=@Html.DisplayFor(model => model.Poster) width="100" height="100">
+                            <img class="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster) width="100" height="100">
                             <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
                             <p>@Html.DisplayFor(model => model.TopList[i].Plot)</p>
                             <p><a href="#">Search</a></p>

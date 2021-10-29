@@ -28,7 +28,6 @@ namespace CMDBGrupp09.Repositories
         public async Task<List<OMDbDto>>TopListMovies(List<CMDbDto> topList)
         {
             var tasks = new List<Task>();
-
             var movieDetails = new List<OMDbDto>();
             try
             {
@@ -52,9 +51,5 @@ namespace CMDBGrupp09.Repositories
             }
             return movieDetails;
         }
-
-
-
-
     }
 }

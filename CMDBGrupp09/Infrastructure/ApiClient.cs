@@ -17,6 +17,7 @@ namespace CMDBGrupp09.Infrastructure
             try
             {
                 using var response = await client.SendAsync(request);
+                
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var responseJson = await response.Content.ReadAsStringAsync();

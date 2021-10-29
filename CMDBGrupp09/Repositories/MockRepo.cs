@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CMDBGrupp09.Repositories
 {
-    public class MockRepo //: IRepoOMDb
+    public class MockRepo : IRepoCMDb //: IRepoOMDb
     {
         public async Task<OMDbDto> GetMovieAsync(string movieID)
         {
@@ -17,6 +17,13 @@ namespace CMDBGrupp09.Repositories
             return GetTestData<OMDbDto>("Django.json");
             
         }
+
+        public async Task<List<CMDbDto>> GetTop5MoviesAsync()
+        {
+            await Task.Delay(0);
+            return GetTestData<List<CMDbDto>>("toplistCMDB.json");
+        }
+
         private readonly string basePath;
 
         public MockRepo(IWebHostEnvironment environment)
@@ -29,6 +36,11 @@ namespace CMDBGrupp09.Repositories
             var path = $"{basePath}{testfile}";
             string data = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<T>(data);
+        }
+
+        Task<CMDbDto> IRepoCMDb.GetMovieAsync(string movieID)
+        {
+            throw new NotImplementedException();
         }
     }
 }
