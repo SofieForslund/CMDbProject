@@ -60,6 +60,7 @@ namespace CMDBGrupp09.Models.ViewModels
                             IMDbRating = query.Value,
                             numberOfDislikes = movieListCmdb[i].numberOfDislikes,
                             numberOfLikes = movieListCmdb[i].numberOfLikes,
+                            Shortplot = movieListOmdb[i2].Plot.Substring(0,101)
 
                         }; 
                         TopList.Add(movie3);

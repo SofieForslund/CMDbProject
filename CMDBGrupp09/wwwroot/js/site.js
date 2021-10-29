@@ -1,4 +1,21 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
 
-// Write your JavaScript code.
+
+let readMoreHtml = document.querySelector('#expand')
+    readMoreHtml.addEventListener("click", function (e) {
+
+        var dots = document.getElementById("#dots");
+        var fullPlot = document.getElementById("#fullPlot");
+        var expand = document.getElementById("#expand");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "block";
+            expand.innerHTML = "Read more";
+            fullPlot.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            expand.innerHTML = "Read less";
+            fullPlot.style.display = "block";
+        }
+
+});

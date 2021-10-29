@@ -53,6 +53,12 @@
 			content: none;
 		}
 
+
+		#fullPlot{
+			display: flex;
+			display : none;
+		}
+
 #searchBox {
 	margin: auto;
 	color: grey;

@@ -28,39 +28,20 @@
                         @for (var i = 1; i < 5; i++)
                         {
                         <div>
+
                             <img class="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster) width="100" height="100">
                             <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
-                            <p>@Html.DisplayFor(model => model.TopList[i].Plot)</p>
-                            <p><a href="#">Search</a></p>
+                            <p id="substring">@Html.DisplayFor(model => model.TopList[i].Shortplot)</p>
+                            <p id="dots">...</p>
+                            <p id="fullPlot">@Html.DisplayFor(model => model.TopList[i].Plot)</p>
+                            <p id="expand">Read more</p> 
                             <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating)</p>
                             <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes)</p>
                             <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)</p>
                         </div>
                         }
-
-
                     </section>
-                        <!--<section>
-                            <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
-                            <h3>Titel</h3>
-                            <p>Beskrivning</p>
-                            <p>Rating</p>
-                        </section>-->
-                    @*</div>
-                    <div class="features-row">*@
-                        <!--<section>
-                            <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
-                            <h3>Titel</h3>
-                            <p>Beskrivning</p>
-                            <p>Rating</p>
-                        </section>
-                        <section>
-                            <img class="filmImage" src="~/images/cabinlogo.jpg" width="100" height="100">
-                            <h3>Titel</h3>
-                            <p>Beskrivning</p>
-                            <p>Rating</p>
-                        </section>-->
-                    @*</div>*@
+
                 </section>
 </section>
 

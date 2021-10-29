@@ -20,7 +20,7 @@ namespace CMDBGrupp09.Repositories
         }
         public async Task<OMDbDto> GetMovieAsync(string movieID) 
         {
-            var result = await apiClient.GetAsync<OMDbDto>($"{baseEndpoint}i={movieID}");
+            var result = await apiClient.GetAsync<OMDbDto>($"{baseEndpoint}i={movieID}&plot=full");
             return result;
         }
 
@@ -35,10 +35,10 @@ namespace CMDBGrupp09.Repositories
                 {
                     tasks.Add(
                         Task.Run(
-                            async () =>
+                            async ()=>
                             {
                                 var omdbresult = await GetMovieAsync(movie.imdbID);
-                                movieDetails.Add(omdbresult);
+                               // movieDetails.Add(omdbresult);
                             }
                         )
                     );
