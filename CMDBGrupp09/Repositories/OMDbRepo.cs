@@ -27,23 +27,21 @@ namespace CMDBGrupp09.Repositories
 
         public async Task<List<OMDbDto>>TopListMovies(List<CMDbDto> topList)
         {
-            var tasks = new List<Task>();
+            var tasks = new List<Task<OMDbDto>>();
             var movieDetails = new List<OMDbDto>();
             try
             {
                 foreach (var movie in topList)
                 {
-                    tasks.Add(
-                        Task.Run(
-                            async ()=>
-                            {
-                                var omdbresult = await GetMovieAsync(movie.imdbID);
-                               // movieDetails.Add(omdbresult);
-                            }
-                        )
-                    );
+                  var task = GetMovieAsync(movie.imdbID);
+                  tasks.Add(task);
                 }
                 await Task.WhenAll(tasks);
+                for (int i = 0; i < tasks.Count; i++)
+                {
+                    movieDetails.Add(tasks[i].Result);
+                }
+
             }
             catch (Exception)
             {
