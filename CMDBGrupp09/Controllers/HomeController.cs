@@ -26,24 +26,22 @@ namespace CMDBGrupp09.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //try
-            //{
+            try
+            {
                 var topListCmdb = await repoCMDb.GetTop5MoviesAsync(); 
                 var omdbList = await repoOMDb.TopListMovies(topListCmdb); 
-
-
 
                 var model = new HomeViewModel(omdbList, topListCmdb);
                 return View(model);
 
-            //}
-            //catch (System.Exception)
-            //{
-            //    var model = new HomeViewModel();
-            //    ModelState.AddModelError(string.Empty, "Går icke");
-            //    return View(model);
-            //    throw;
-            //}
+            }
+            catch (System.Exception)
+            {
+                var model = new HomeViewModel();
+                ModelState.AddModelError(string.Empty, "Går icke");
+                return View(model);
+                throw;
+            }
 
         }
 
