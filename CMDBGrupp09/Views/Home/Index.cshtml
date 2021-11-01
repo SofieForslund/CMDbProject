@@ -18,35 +18,36 @@
         <section class="box special">
             <header class="major">
                 @*<h2>@Html.DisplayFor(model => model.TopList[0].Title)</h2>
-                <p>@Html.DisplayFor(model => model.TopList[0].Plot)</p>
-                <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating)</p>*@
+                    <p>@Html.DisplayFor(model => model.TopList[0].Plot)</p>
+                    <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating)</p>*@
             </header>
             @*<span class="image featured"><a asp-controller="Movie" asp-action="Index"><img src=@Html.DisplayFor(model => model.TopList[0].Poster) alt="" /></a></span>*@
-                <section class="box special features">
-                    @*<div class="features-row">*@
-                    <section>
-                        @foreach (var movie in Model.TopList)
-                        {
-                            <div>
-                                <img class="filmImage" src=@Html.DisplayFor(model => movie.Poster) width="100" height="100">
-                                <h3>@Html.DisplayFor(model => movie.Title)</h3>
-                                <p id="subString">@Html.DisplayFor(model => movie.Shortplot)</p>
-                                <p id="dots">...</p>
-                                <p id="fullPlot">@Html.DisplayFor(model => movie.Plot)</p>
-                                <p id="expand">Read more</p>
-                                <p>@Html.DisplayFor(model => movie.IMDbRating)</p>
-                                <p>@Html.DisplayFor(model => movie.numberOfDislikes)</p>
-                                <p>@Html.DisplayFor(model => movie.numberOfLikes)</p>
-                            </div>
-                        }
-
-                    </section>
+            <section class="box special features">
+                @*<div class="features-row">*@
+                <section>
+                    @foreach (var movie in Model.TopList)
+                    {
+                        <div>
+                            <img id="filmImage" src=@Html.DisplayFor(model => movie.Poster) width="100" height="100">
+                            <h3>@Html.DisplayFor(model => movie.Title)</h3>
+                            <p id="subString">@Html.DisplayFor(model => movie.Shortplot)</p>
+                            <p id="dots">...</p>
+                            <p id="fullPlot">@Html.DisplayFor(model => movie.Plot)</p>
+                            <p id="expand">Read more</p>
+                            <p>@Html.DisplayFor(model => movie.IMDbRating)</p>
+                            <p>@Html.DisplayFor(model => movie.numberOfDislikes)</p>
+                            <p>@Html.DisplayFor(model => movie.numberOfLikes)</p>
+                        </div>
+                    }
 
                 </section>
-</section>
+
+            </section>
+        </section>
 
 
 
     </section>
 
+    <script src="~/js/home.js" asp-append-version="true"></script>
 </div>
