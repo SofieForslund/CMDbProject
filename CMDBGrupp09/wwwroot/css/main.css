@@ -53,7 +53,7 @@
 			content: none;
 		}
 
-#subString, #fullPlot, #dots, #expand {
+#subString, #fullPlot, #dots, #expand, #ID {
 	display : flex;
 }
 

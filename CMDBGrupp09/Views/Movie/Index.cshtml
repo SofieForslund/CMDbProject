@@ -17,6 +17,7 @@
                 <div class="row-6 row-12-mobilep">
                     <h3>Skådespelare</h3>
                     <p>@Html.DisplayFor(model => model.Actors)</p>
+                    <p id="ID">@Html.DisplayFor(model => model.imdbID)</p>
                 </div>
             </div>
 
@@ -43,8 +44,8 @@
 
                         <section class="box special">
                             <h3>CMDB Likes and dislikes</h3>
-                            <h2>@Html.DisplayFor(model => model.numberOfDislikes)</h2>
-                            <h2>@Html.DisplayFor(model => model.numberOfLikes)</h2>
+                            <h2 id="dislikeNumber">@Html.DisplayFor(model => model.numberOfDislikes)</h2>
+                            <h2 id="likeNumber">@Html.DisplayFor(model => model.numberOfLikes)</h2>
                         </section>
 
                     </div>
