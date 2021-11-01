@@ -1,5 +1,6 @@
 ﻿using CMDBGrupp09.Infrastructure;
 using CMDBGrupp09.Models;
+using CMDBGrupp09.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,7 @@ namespace CMDBGrupp09.Repositories
         public async Task<List<CMDbDto>> GetTop5MoviesAsync() => await apiClient.GetAsync<List<CMDbDto>>($"{baseEndpoint}/Toplist?sort=desc&count=5&type=popularity");
 
         public async Task<CMDbDto> LikeMovieAsync(string movieID) => await apiClient.GetAsync<CMDbDto>($"{baseEndpoint}/Movie/{movieID}/like");
+
+
 }
 }

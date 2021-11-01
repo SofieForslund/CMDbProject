@@ -1,4 +1,5 @@
 ﻿using CMDBGrupp09.Models;
+using CMDBGrupp09.Models.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 using System;
@@ -9,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace CMDBGrupp09.Repositories
 {
-    public class MockRepo : IRepoCMDb //: IRepoOMDb
+    public class MockRepo : IRepoCMDb 
     {
-        public async Task<OMDbDto> GetMovieAsync(string movieID)
+        public async Task<CMDbDto> GetMovieAsync(string movieID)
         {
             await Task.Delay(0);
-            return GetTestData<OMDbDto>("Django.json");
+            return GetTestData<CMDbDto>("Django.json");
         }
 
         public async Task<List<CMDbDto>> GetTop5MoviesAsync()
@@ -26,7 +27,7 @@ namespace CMDBGrupp09.Repositories
         public async Task<CMDbDto> LikeMovieAsync(string movieID)
         {
             await Task.Delay(0);
-            return GetTestData<CMDbDto>("Django.json");
+            return GetTestData<CMDbDto>("djangoCmdb.json");
         }
 
         private readonly string basePath;
@@ -43,9 +44,6 @@ namespace CMDBGrupp09.Repositories
             return JsonConvert.DeserializeObject<T>(data);
         }
 
-        Task<CMDbDto> IRepoCMDb.GetMovieAsync(string movieID)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

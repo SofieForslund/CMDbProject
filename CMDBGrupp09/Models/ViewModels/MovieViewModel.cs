@@ -19,8 +19,10 @@ namespace CMDBGrupp09.Models.ViewModels
         public string imdbID { get; set; }
         public string Poster { get; set; }
         public string Plot { get; set; }
+        public int numberOfLikes { get; set; }
+        public int numberOfDislikes { get; set; }
 
-        public MovieViewModel(OMDbDto omdb)
+        public MovieViewModel(OMDbDto omdb, CMDbDto cmdb)
         {
 
             Title = omdb.Title;
@@ -34,6 +36,8 @@ namespace CMDBGrupp09.Models.ViewModels
             Actors = omdb.Actors;
             Genre = omdb.Genre;
             Ratings = omdb.Ratings;
+            numberOfDislikes = cmdb.numberOfDislikes;
+            numberOfLikes = cmdb.numberOfLikes;
 
         }
     }

@@ -26,7 +26,7 @@ namespace CMDBGrupp09
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IRepoOMDb, OMDbRepo>();
-            services.AddScoped<IRepoCMDb, MockRepo>();
+            services.AddScoped<IRepoCMDb, CMDbRepo>();
             services.AddScoped<IApiClient, ApiClient>();
 
             services.AddControllersWithViews();

@@ -14,16 +14,19 @@ namespace CMDBGrupp09.Controllers
         string movieID = "tt1853728"; 
 
         private IRepoOMDb repoOMDb;
+        private IRepoCMDb repoCMDb;
 
-        public MovieController(IRepoOMDb repoOMDb)
+        public MovieController(IRepoOMDb repoOMDb, IRepoCMDb repoCMDb)
         {
             this.repoOMDb = repoOMDb;
+            this.repoCMDb = repoCMDb;
         }
 
         public async Task<IActionResult> Index()
         {
-            var movie = await repoOMDb.GetMovieAsync(movieID);
-            var model = new MovieViewModel(movie);
+            var omdbMovie = await repoOMDb.GetMovieAsync(movieID);
+            var cmdbMovie = await repoCMDb.GetMovieAsync(movieID);
+            var model = new MovieViewModel(omdbMovie, cmdbMovie);
             return View(model);
         }
     }
