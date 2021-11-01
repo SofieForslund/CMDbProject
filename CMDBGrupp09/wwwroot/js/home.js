@@ -1,19 +1,26 @@
 ﻿document.querySelector('#fullPlot').style.display = "none"
 
-document.querySelector('#expand').addEventListener("click", function () {
+
+
+document.querySelector('#expand').addEventListener("click", function() {
+
+    let fullPlotMovie = document.querySelector('#fullPlot');
+    let expandMovie = document.querySelector('#expand');
+    let dotsMovie = document.querySelector('#dots');
+    let subStringMovie = document.querySelector('#subString');
 
     if (document.querySelector('#fullPlot').style.display === "none") {
 
-        document.querySelector('#fullPlot').style.display = "inline";
-        document.querySelector('#expand').innerHTML = 'Read less';
-        document.querySelector('#dots').style.display = 'none';
-        document.querySelector('#subString').style.display = 'none';
+        fullPlotMovie.style.display = "inline";
+        expandMovie.innerHTML = 'Read less';
+        dotsMovie.style.display = 'none';
+        subStringMovie.style.display = 'none';
     }
     else {
-        document.querySelector('#fullPlot').style.display = "none";
-        document.querySelector('#expand').innerHTML = 'Read more';
-        document.querySelector('#dots').style.display = 'inline';
-        document.querySelector('#subString').style.display = 'inline';
+        fullPlotMovie.style.display = "none";
+        expandMovie.innerHTML = 'Read more';
+        dotsMovie.style.display = 'inline';
+        subStringMovie.style.display = 'inline';
     }
 });
 
