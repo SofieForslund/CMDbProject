@@ -2050,12 +2050,14 @@
 		position: relative;
 		margin: 0 0 1.5em 0;
 		font-style: italic;
+		text-align:center;
 	}
 
 	header h2 + p {
 		font-size: 1.25em;
 		margin-top: -1em;
 		line-height: 1.5em;
+
 	}
 
 	header h3 + p {
@@ -2080,14 +2082,17 @@
 		header.major h2 {
 			margin: 0;
 		}
+.subString, .fullPlot, .expand {
+	justify-content: center;
+}
 
 		header.major p {
-			display: inline-block;
-			border-top: solid 2px #e5e5e5;
-			color: #777;
-			margin: 1.5em 0 0 0;
-			padding: 1.5em 0 0 0;
+			display: flex;
+			color: black;
+			margin: 0.5em 0 0 0;
+			padding: 0.5em 0 0 0;
 			font-style: normal;
+			justify-content: center;
 		}
 
 /* Form */
@@ -2275,6 +2280,10 @@
 		opacity: 1.0;
 	}
 
+	.movieDiv {
+	text-align: center;
+	}
+
 /* Box */
 
 	.box {
@@ -2296,15 +2305,12 @@
 			margin: 0 0 2em 0;
 			padding: 0 !important;
 		}
-.movieDiv {
+			
 
-	text-align: center;
-}
-
-	.box.features .features-row {
-	position: relative;
-	text-align: center;
-}
+			.box.features .features-row {
+			position: relative;
+			text-align: center;
+			}
 
 			.box.features .features-row:after {
 				clear: both;
@@ -2313,7 +2319,7 @@
 			}
 
 			.box.features .features-row section {
-				float: left;
+				float: none;
 				padding: 3em;
 				width: 50%;
 			}
@@ -2358,22 +2364,23 @@
 				}
 
 		.box.special {
-			text-align: center;
+			align-items: center;
 		}
 
 		.box .image.featured {
 			border-radius: 0;
-			display: block;
+			display: flex;
 			margin: 3em 0 3em -3em;
-			position: relative;
+			justify-content: center;
 			width: calc(100% + 6em);
 		}
 
 			.box .image.featured img {
 				border-radius: 0;
 				display: block;
-				width: 70%;
+				width: 100%;
 				align-items: center;
+				margin-top:40px;
 			}
 
 			.box .image.featured:first-child {
@@ -3931,5 +3938,8 @@
 			#cta {
 				padding: 2.5em 1em 3em 1em;
 			}
+		.filmImage {
+			width: 100px;
+		}
 
 	}
