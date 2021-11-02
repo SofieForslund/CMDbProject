@@ -21,11 +21,16 @@
         <section class="box special">
             <header class="major">
                 <h2>@Html.DisplayFor(model => model.TopList[0].Title)</h2>
+                <br>
                 <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating)</p>
+                <br>
                 <p>@Html.DisplayFor(model => model.TopList[0].numberOfDislikes) st CMDb dislikes</p>
-                <p>@Html.DisplayFor(model => model.TopList[0].numberOfLikes)</p>
-                <p>@Html.DisplayFor(model => model.TopList[0].Shortplot)...</p>
-                <p id="dots">...</p>
+                <br>
+                <p>@Html.DisplayFor(model => model.TopList[0].numberOfLikes) st CMDb likes</p>
+                <br>
+                <p id="subString">@Html.DisplayFor(model => model.TopList[0].Shortplot)...</p>
+                <br>
+               
                 <p id="fullPlot">@Html.DisplayFor(model => model.TopList[0].Plot)</p>
                 <p id="expand">Read more</p>
 
@@ -39,7 +44,7 @@
                         <div class="movieDiv">
                             <img id="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster) width="100" height="100">
                             <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
-                            <p id="subString">@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
+                            <p>@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
                             <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating)</p>
                             <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes)</p>
                             <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)</p>

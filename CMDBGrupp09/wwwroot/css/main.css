@@ -2296,11 +2296,15 @@
 			margin: 0 0 2em 0;
 			padding: 0 !important;
 		}
+.movieDiv {
 
-		.box.features .features-row {
-			border-top: solid 2px #e5e5e5;
-			position: relative;
-		}
+	text-align: center;
+}
+
+	.box.features .features-row {
+	position: relative;
+	text-align: center;
+}
 
 			.box.features .features-row:after {
 				clear: both;
@@ -2368,7 +2372,8 @@
 			.box .image.featured img {
 				border-radius: 0;
 				display: block;
-				width: 100%;
+				width: 70%;
+				align-items: center;
 			}
 
 			.box .image.featured:first-child {
@@ -3193,7 +3198,7 @@
 
 #banner {
 	background-attachment: scroll, fixed;
-	background-color: #666;
+	background-color: black;
 	background-image: url("../../images/film.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
