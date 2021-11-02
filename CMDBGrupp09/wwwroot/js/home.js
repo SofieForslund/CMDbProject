@@ -1,7 +1,5 @@
 ﻿document.querySelector('#fullPlot').style.display = "none"
 
-
-
 document.querySelector('#expand').addEventListener("click", function() {
 
     let fullPlotMovie = document.querySelector('#fullPlot');
@@ -24,10 +22,9 @@ document.querySelector('#expand').addEventListener("click", function() {
     }
 });
 
-/*
 
-let like = document.querySelector('#like')
-like.addEventListener('click', function (e) {
 
-})
-*/
+
+
+
+

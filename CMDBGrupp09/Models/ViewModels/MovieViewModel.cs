@@ -21,10 +21,10 @@ namespace CMDBGrupp09.Models.ViewModels
         public string Plot { get; set; }
         public int numberOfLikes { get; set; }
         public int numberOfDislikes { get; set; }
+        public string cmdbInfo { get; set; }
 
         public MovieViewModel(OMDbDto omdb, CMDbDto cmdb)
         {
-
             Title = omdb.Title;
             Plot = omdb.Plot;
             Poster = omdb.Poster;
@@ -38,6 +38,24 @@ namespace CMDBGrupp09.Models.ViewModels
             Ratings = omdb.Ratings;
             numberOfDislikes = cmdb.numberOfDislikes;
             numberOfLikes = cmdb.numberOfLikes;
+            cmdbInfo = "";
+            
+        }
+
+        public MovieViewModel(OMDbDto omdb)
+        {
+            Title = omdb.Title;
+            Plot = omdb.Plot;
+            Poster = omdb.Poster;
+            imdbID = omdb.imdbID;
+            Year = omdb.Year;
+            Runtime = omdb.Runtime;
+            Language = omdb.Language;
+            Director = omdb.Director;
+            Actors = omdb.Actors;
+            Genre = omdb.Genre;
+            Ratings = omdb.Ratings;
+            cmdbInfo = "Filmen är ännu inte betygsatt av en cineast!";
 
         }
     }

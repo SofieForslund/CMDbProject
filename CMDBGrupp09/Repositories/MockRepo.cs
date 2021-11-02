@@ -24,12 +24,6 @@ namespace CMDBGrupp09.Repositories
             return GetTestData<List<CMDbDto>>("toplistCMDB.json");
         }
 
-        public async Task<CMDbDto> LikeMovieAsync(string movieID)
-        {
-            await Task.Delay(0);
-            return GetTestData<CMDbDto>("djangoCmdb.json");
-        }
-
         private readonly string basePath;
 
         public MockRepo(IWebHostEnvironment environment)

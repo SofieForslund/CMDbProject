@@ -11,17 +11,6 @@ namespace CMDBGrupp09.Models.ViewModels
     public class HomeViewModel
     {
 
-
-        //public string Title { get; }
-        //public string Plot { get; }
-        //public string Poster { get; }
-        //public string IMDbRating { get; }
-        //public string ImdbID { get; }
-        //public int numberOfLikes { get; set; }
-        //public int numberOfDislikes { get; set; }
-
-        //public TotalMovieDto CompleteMovie { get; set; }
-
         public List<TotalMovieDto> TopList { get; set; } = new List<TotalMovieDto>();
 
 
@@ -30,6 +19,19 @@ namespace CMDBGrupp09.Models.ViewModels
         {
             
         }
+
+        public string CreateShortPlot(OMDbDto movie) 
+        {
+            if (movie.Plot.Length < 50)
+            {
+                return "N/A";
+            }
+            else
+            {
+                return movie.Plot.Substring(0, 50);
+            }
+        }
+
         public HomeViewModel(List<OMDbDto> movieListOmdb, List<CMDbDto> movieListCmdb)
         {
             foreach (var movieCmdb in movieListCmdb)
@@ -42,39 +44,19 @@ namespace CMDBGrupp09.Models.ViewModels
 
                     if (movieCmdb.imdbID == movieOmdb.imdbID)
                     {
-                        if (movieOmdb.Plot.Length < 10)
-                        {
                             TotalMovieDto completeMovie = new TotalMovieDto()
                             {
                                 Title = movieOmdb.Title,
                                 Plot = movieOmdb.Plot,
                                 Poster = movieOmdb.Poster,
                                 ImdbID = movieOmdb.imdbID,
-                                Shortplot = "N/A",
+                                Shortplot = CreateShortPlot(movieOmdb),
                                 IMDbRating = query.Value,
                                 numberOfDislikes = movieCmdb.numberOfDislikes,
                                 numberOfLikes = movieCmdb.numberOfLikes
                             };
                             TopList.Add(completeMovie);
                             break;
-                        }
-                        else
-                        {
-                            TotalMovieDto completeMovie = new TotalMovieDto()
-                            {
-                                Title = movieOmdb.Title,
-                                Plot = movieOmdb.Plot,
-                                Poster = movieOmdb.Poster,
-                                ImdbID = movieOmdb.imdbID,
-                                Shortplot = movieOmdb.Plot.Substring(0,20),
-                                IMDbRating = query.Value,
-                                numberOfDislikes = movieCmdb.numberOfDislikes,
-                                numberOfLikes = movieCmdb.numberOfLikes
-                            };
-                            TopList.Add(completeMovie);
-                            break;
-                        }
-
                     }
                 } 
             }

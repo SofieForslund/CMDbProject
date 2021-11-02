@@ -53,8 +53,8 @@
 			content: none;
 		}
 
-#subString, #fullPlot, #dots, #expand, #ID {
-	display : flex;
+#subString, #fullPlot, #dots, #expand, #cmdbInfo, .cmdbNumbers {
+	display: flex;
 }
 
 
@@ -3194,7 +3194,7 @@
 #banner {
 	background-attachment: scroll, fixed;
 	background-color: #666;
-	background-image: url("../../images/cabinlogo.jpg");
+	background-image: url("../../images/film.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto, cover;
