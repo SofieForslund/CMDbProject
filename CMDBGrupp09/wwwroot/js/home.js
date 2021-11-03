@@ -6,19 +6,19 @@ document.querySelector('#expand').addEventListener("click", function () {
     let expandMovie = document.querySelector('#expand');
     let subStringMovie = document.querySelector('#subString');
 
-    let substring = subStringMovie.textContent;
+    if (document.querySelector('#fullPlot').style.display === "none") {
 
-    if (document.querySelector('#expand').textContent === "Read more") {
-        //fullPlotMovie.style.display = "inline";
-        expandMovie.textContent = 'Read less';
-        subStringMovie.textContent = fullPlotMovie.textContent;
+        document.querySelector('#fullPlot').style.display = "inline";
+        document.querySelector('#expand').innerHTML = 'Read less';
+        document.querySelector('#subString').style.display = "none";
     }
     else {
-        //fullPlotMovie.style.display = "none";
-        expandMovie.textContent = 'Read more';
-        subStringMovie.textContent = substring;
+        document.querySelector('#fullPlot').style.display = "none";
+        document.querySelector('#expand').innerHTML = 'Read more';
+        document.querySelector('#subString').style.display = "inline";
     }
 });
+
 
 
 
