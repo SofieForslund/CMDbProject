@@ -1,10 +1,12 @@
 ﻿document.querySelector('#fullPlot').style.display = "none"
 
-document.querySelector('#expand').addEventListener("click", function () {
+if (document.querySelector('#subString').textContent === "N/A") {
+    document.querySelector('#fullPlot').style.display = "inline";
+    document.querySelector('#expand').style.display = "none";
+    document.querySelector('#subString').style.display = "none";
+}
 
-    let fullPlotMovie = document.querySelector('#fullPlot');
-    let expandMovie = document.querySelector('#expand');
-    let subStringMovie = document.querySelector('#subString');
+document.querySelector('#expand').addEventListener("click", function () {
 
     if (document.querySelector('#fullPlot').style.display === "none") {
 

@@ -11,8 +11,6 @@ namespace CMDBGrupp09.Controllers
 {
     public class MovieController : Controller
     {
-        
-
         private IRepoOMDb repoOMDb;
         private IRepoCMDb repoCMDb;
 
@@ -21,32 +19,39 @@ namespace CMDBGrupp09.Controllers
             this.repoOMDb = repoOMDb;
             this.repoCMDb = repoCMDb;
         }
-
         
         public async Task<IActionResult> Index(string id)
         {
-            //dessa skapas inte här, utan kommer ifrån javascriften på nåt sätt
-            var omdbMovie = await repoOMDb.GetMovieAsync(id);
-            
-
             try
             {
-                var cmdbMovie = await repoCMDb.GetMovieAsync(id);
-                var model = new MovieViewModel(omdbMovie, cmdbMovie);
-                return View(model);
+                var omdbMovie = await repoOMDb.GetMovieAsync(id);
+                try
+                {
+
+                    var cmdbMovie = await repoCMDb.GetMovieAsync(id);
+                    var model = new MovieViewModel(omdbMovie, cmdbMovie);
+                    return View(model);
+                }
+                catch (Exception)
+                {
+                    CMDbDto cmdbMovie = new CMDbDto()
+                    {
+                        imdbID = id,
+                        numberOfDislikes = 0,
+                        numberOfLikes = 0
+                    };
+                    var model = new MovieViewModel(omdbMovie, cmdbMovie);
+                    return View(model);
+                }
             }
             catch (Exception)
             {
-                CMDbDto cmdbMovie = new CMDbDto()
-                {
-                    imdbID = id,
-                    numberOfDislikes = 0,
-                    numberOfLikes = 0
-                };
-                var model = new MovieViewModel(omdbMovie, cmdbMovie);
+                var model = new MovieViewModel();
+                ModelState.AddModelError(string.Empty, "Går icke");
                 return View(model);
-
+                throw;
             }
+            
 
             
 

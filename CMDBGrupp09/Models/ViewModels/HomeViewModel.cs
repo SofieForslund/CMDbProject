@@ -10,26 +10,20 @@ namespace CMDBGrupp09.Models.ViewModels
 {
     public class HomeViewModel
     {
-
         public List<TotalMovieDto> TopList { get; set; } = new List<TotalMovieDto>();
-
-
 
         public HomeViewModel()
         {
-            
+
         }
 
         public string CreateShortPlot(OMDbDto movie) 
         {
-            if (movie.Plot.Length < 50)
+            if (movie.Plot.Length < 70)
             {
                 return "N/A";
             }
-            else
-            {
-                return movie.Plot.Substring(0, 50);
-            }
+            return movie.Plot.Substring(0, 70);
         }
 
         public HomeViewModel(List<OMDbDto> movieListOmdb, List<CMDbDto> movieListCmdb)

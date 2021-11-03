@@ -30,10 +30,8 @@ namespace CMDBGrupp09.Controllers
             {
                 var topListCmdb = await repoCMDb.GetTop5MoviesAsync(); 
                 var omdbList = await repoOMDb.TopListMovies(topListCmdb); 
-
                 var model = new HomeViewModel(omdbList, topListCmdb);
                 return View(model);
-
             }
             catch (System.Exception)
             {

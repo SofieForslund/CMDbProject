@@ -7,7 +7,6 @@ namespace CMDBGrupp09.Models.ViewModels
 {
     public class MovieViewModel
     {
-
         public string Title { get; set; }
         public int Year { get; set; }
         public string Runtime { get; set; }
@@ -31,8 +30,6 @@ namespace CMDBGrupp09.Models.ViewModels
             }
             return "";
         }
-
-
         public MovieViewModel(OMDbDto omdb, CMDbDto cmdb)
         {
             Title = omdb.Title;
@@ -46,30 +43,13 @@ namespace CMDBGrupp09.Models.ViewModels
             Actors = omdb.Actors;
             Genre = omdb.Genre;
             Ratings = omdb.Ratings;
-            numberOfDislikes = cmdb.numberOfDislikes; //om cmdb-objektet är tomt tilldelas O
-            numberOfLikes = cmdb.numberOfLikes; //om cmdb-objektet är tomt tilldelas O
+            numberOfDislikes = cmdb.numberOfDislikes; 
+            numberOfLikes = cmdb.numberOfLikes; 
             cmdbInfo = CheckCmdb(cmdb); 
-            
         }
+        public MovieViewModel()
+        {
 
-
-        //public MovieViewModel(OMDbDto omdb)
-        //{
-        //    Title = omdb.Title;
-        //    Plot = omdb.Plot;
-        //    Poster = omdb.Poster;
-        //    imdbID = omdb.imdbID;
-        //    Year = omdb.Year;
-        //    Runtime = omdb.Runtime;
-        //    Language = omdb.Language;
-        //    Director = omdb.Director;
-        //    Actors = omdb.Actors;
-        //    Genre = omdb.Genre;
-        //    Ratings = omdb.Ratings;
-        //    numberOfDislikes = 0;
-        //    numberOfLikes = 0;
-        //    cmdbInfo = "Filmen är ännu inte betygsatt av en cineast!";
-
-        //}
+        }
     }
 }
