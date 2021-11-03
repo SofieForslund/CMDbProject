@@ -20,12 +20,12 @@
     <section id="main" class="container">
 
         <section class="box special">
-            
-            <span class="image featured"><a asp-controller="Movie" asp-action="Index"><img src=@Html.DisplayFor(model => model.TopList[0].Poster) alt="Film poster" /></a></span>
-            <header class="major">
-                <div id="searchHits">
+            <div id="searchHits">
 
-                </div>
+            </div>
+            <span class="image featured"><a asp-controller="Movie" asp-action="Index" asp-route-id="@Model.TopList[0].ImdbID"><img src=@Html.DisplayFor(model => model.TopList[0].Poster) alt="Film poster" /></a></span>
+            <header class="major">
+                
 
                 <h2>@Html.DisplayFor(model => model.TopList[0].Title)</h2>
                 <br>
@@ -47,15 +47,15 @@
                 <section>
                     @for (int i =1; i < Model.TopList.Count; i++)
                     {
-                    <div class="movieDiv">
-                        <img id="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster)>
-                        <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
-                        <p>@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
-                        <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating) <b>IMDb Rating</b></p>
-                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes) <b>st CMDb dislikes</b></p>
-                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)<b> st CMDb likes</b></p>
-                        <p><b>Go to movie</b></p>
-                    </div>
+                    <div class="movieDiv" ><a asp-controller="Movie" asp-action="Index" asp-route-id="@Model.TopList[i].ImdbID"/>
+                    <img id="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster)>
+                    <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
+                    <p>@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
+                    <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating) <b>IMDb Rating</b></p>
+                    <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes) <b>st CMDb dislikes</b></p>
+                    <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)<b> st CMDb likes</b></p>
+
+</div>
                     }
 
                 </section>
