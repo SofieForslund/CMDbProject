@@ -20,6 +20,8 @@
     <section id="main" class="container">
 
         <section class="box special">
+            
+            <span class="image featured"><a asp-controller="Movie" asp-action="Index"><img src=@Html.DisplayFor(model => model.TopList[0].Poster) alt="Film poster" /></a></span>
             <header class="major">
                 <div id="searchHits">
 
@@ -27,33 +29,33 @@
 
                 <h2>@Html.DisplayFor(model => model.TopList[0].Title)</h2>
                 <br>
-                <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating)</p>
+                <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating) <b> IMDb Rating</b></p>
                 <br>
-                <p>@Html.DisplayFor(model => model.TopList[0].numberOfDislikes) st CMDb dislikes</p>
+                <p>@Html.DisplayFor(model => model.TopList[0].numberOfDislikes) <b>st CMDb dislikes</b></p>
                 <br>
-                <p>@Html.DisplayFor(model => model.TopList[0].numberOfLikes) st CMDb likes</p>
+                <p>@Html.DisplayFor(model => model.TopList[0].numberOfLikes) <b>st CMDb likes</b></p>
                 <br>
-                <p id="subString">@Html.DisplayFor(model => model.TopList[0].Shortplot)...</p>
+                <p id="subString">@Html.DisplayFor(model => model.TopList[0].Shortplot)...</p><p id="expand">Read more</p>
                 <br>
-
                 <p id="fullPlot">@Html.DisplayFor(model => model.TopList[0].Plot)</p>
-                <p id="expand">Read more</p>
+                
 
             </header>
-            <span class="image featured"><a asp-controller="Movie" asp-action="Index"><img src=@Html.DisplayFor(model => model.TopList[0].Poster) alt="Film poster" /></a></span>
+            
             <section class="box special features">
                 @*<div class="features-row">*@
                 <section>
                     @for (int i =1; i < Model.TopList.Count; i++)
                     {
-                        <div class="movieDiv">
-                            <img id="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster) width="100" height="100">
-                            <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
-                            <p>@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
-                            <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating)</p>
-                            <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes)</p>
-                            <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)</p>
-                        </div>
+                    <div class="movieDiv">
+                        <img id="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster)>
+                        <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
+                        <p>@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
+                        <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating) <b>IMDb Rating</b></p>
+                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes) <b>st CMDb dislikes</b></p>
+                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)<b> st CMDb likes</b></p>
+                        <p><b>Go to movie</b></p>
+                    </div>
                     }
 
                 </section>

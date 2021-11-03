@@ -10,13 +10,13 @@ document.querySelector('#expand').addEventListener("click", function () {
 
     if (document.querySelector('#expand').textContent === "Read more") {
         //fullPlotMovie.style.display = "inline";
-        expandMovie.innerHTML = 'Read less';
-        subStringMovie.innerHTML = fullPlotMovie.textContent;
+        expandMovie.textContent = 'Read less';
+        subStringMovie.textContent = fullPlotMovie.textContent;
     }
     else {
         //fullPlotMovie.style.display = "none";
-        expandMovie.innerHTML = 'Read more';
-        subStringMovie.innerHTML = substring;
+        expandMovie.textContent = 'Read more';
+        subStringMovie.textContent = substring;
     }
 });
 
