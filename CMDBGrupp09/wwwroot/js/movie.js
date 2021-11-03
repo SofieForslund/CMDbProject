@@ -1,13 +1,15 @@
 ﻿document.querySelector('#ID').style.display = "none"
 let movieID = document.querySelector('#ID').textContent
-
+let counter = 0;
 
 document.querySelector('#like').addEventListener("click", async function (e) {
     try {
-        e.preventDefault();
-        let response = await fetch(`https://grupp9.dsvkurs.miun.se/api/Movie/${movieID}/like`)
-        let movie = await response.json()
-        await update(movie)
+        if (counter === 0) {
+            let response = await fetch(`https://grupp9.dsvkurs.miun.se/api/Movie/${movieID}/like`)
+            let movie = await response.json()
+            await update(movie)
+            counter ++
+        }
 
     } catch (e) {
         alert("det gick inte");
@@ -16,10 +18,12 @@ document.querySelector('#like').addEventListener("click", async function (e) {
 
 document.querySelector('#dislike').addEventListener("click", async function (e) {
     try {
-        e.preventDefault();
-        let response = await fetch(`https://grupp9.dsvkurs.miun.se/api/Movie/${movieID}/dislike`)
-        let movie = await response.json()
-        await update(movie)
+        if (counter === 0) {
+            let response = await fetch(`https://grupp9.dsvkurs.miun.se/api/Movie/${movieID}/dislike`)
+            let movie = await response.json()
+            await update(movie)
+            counter ++
+        }
 
     } catch (e) {
         alert("det gick inte");
