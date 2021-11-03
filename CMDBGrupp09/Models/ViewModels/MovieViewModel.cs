@@ -23,6 +23,16 @@ namespace CMDBGrupp09.Models.ViewModels
         public int numberOfDislikes { get; set; }
         public string cmdbInfo { get; set; }
 
+        public string CheckCmdb(CMDbDto cmdb)
+        {
+            if (cmdb.numberOfLikes == 0 && cmdb.numberOfDislikes == 0)
+            {
+                return "Filmen är ännu inte betygsatt av en cineast!";
+            }
+            return "";
+        }
+
+
         public MovieViewModel(OMDbDto omdb, CMDbDto cmdb)
         {
             Title = omdb.Title;
@@ -36,27 +46,30 @@ namespace CMDBGrupp09.Models.ViewModels
             Actors = omdb.Actors;
             Genre = omdb.Genre;
             Ratings = omdb.Ratings;
-            numberOfDislikes = cmdb.numberOfDislikes;
-            numberOfLikes = cmdb.numberOfLikes;
-            cmdbInfo = "";
+            numberOfDislikes = cmdb.numberOfDislikes; //om cmdb-objektet är tomt tilldelas O
+            numberOfLikes = cmdb.numberOfLikes; //om cmdb-objektet är tomt tilldelas O
+            cmdbInfo = CheckCmdb(cmdb); 
             
         }
 
-        public MovieViewModel(OMDbDto omdb)
-        {
-            Title = omdb.Title;
-            Plot = omdb.Plot;
-            Poster = omdb.Poster;
-            imdbID = omdb.imdbID;
-            Year = omdb.Year;
-            Runtime = omdb.Runtime;
-            Language = omdb.Language;
-            Director = omdb.Director;
-            Actors = omdb.Actors;
-            Genre = omdb.Genre;
-            Ratings = omdb.Ratings;
-            cmdbInfo = "Filmen är ännu inte betygsatt av en cineast!";
 
-        }
+        //public MovieViewModel(OMDbDto omdb)
+        //{
+        //    Title = omdb.Title;
+        //    Plot = omdb.Plot;
+        //    Poster = omdb.Poster;
+        //    imdbID = omdb.imdbID;
+        //    Year = omdb.Year;
+        //    Runtime = omdb.Runtime;
+        //    Language = omdb.Language;
+        //    Director = omdb.Director;
+        //    Actors = omdb.Actors;
+        //    Genre = omdb.Genre;
+        //    Ratings = omdb.Ratings;
+        //    numberOfDislikes = 0;
+        //    numberOfLikes = 0;
+        //    cmdbInfo = "Filmen är ännu inte betygsatt av en cineast!";
+
+        //}
     }
 }

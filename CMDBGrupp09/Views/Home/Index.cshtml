@@ -10,6 +10,7 @@
             <div>
                 <button type="submit" id="searchButton" @*asp-controller="Movie" asp-action="Index"*@>Search</button>
             </div>
+
         @*<ul class="actions special">
             <li><a href="#" class="button primary">Search</a></li>
         </ul>*@
@@ -20,6 +21,10 @@
 
         <section class="box special">
             <header class="major">
+                <div id="searchHits">
+
+                </div>
+
                 <h2>@Html.DisplayFor(model => model.TopList[0].Title)</h2>
                 <br>
                 <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating)</p>
@@ -30,7 +35,7 @@
                 <br>
                 <p id="subString">@Html.DisplayFor(model => model.TopList[0].Shortplot)...</p>
                 <br>
-               
+
                 <p id="fullPlot">@Html.DisplayFor(model => model.TopList[0].Plot)</p>
                 <p id="expand">Read more</p>
 

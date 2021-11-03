@@ -11,7 +11,7 @@ namespace CMDBGrupp09.Controllers
 {
     public class MovieController : Controller
     {
-        string movieID = "tt1853728"; 
+        
 
         private IRepoOMDb repoOMDb;
         private IRepoCMDb repoCMDb;
@@ -22,16 +22,38 @@ namespace CMDBGrupp09.Controllers
             this.repoCMDb = repoCMDb;
         }
 
-        public async Task<IActionResult> Index()
+        
+        public async Task<IActionResult> Index(string id)
         {
             //dessa skapas inte här, utan kommer ifrån javascriften på nåt sätt
-            var omdbMovie = await repoOMDb.GetMovieAsync(movieID);
-            var cmdbMovie = await repoCMDb.GetMovieAsync(movieID);
+            var omdbMovie = await repoOMDb.GetMovieAsync(id);
+            
+
+            try
+            {
+                var cmdbMovie = await repoCMDb.GetMovieAsync(id);
+                var model = new MovieViewModel(omdbMovie, cmdbMovie);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                CMDbDto cmdbMovie = new CMDbDto()
+                {
+                    imdbID = id,
+                    numberOfDislikes = 0,
+                    numberOfLikes = 0
+                };
+                var model = new MovieViewModel(omdbMovie, cmdbMovie);
+                return View(model);
+
+            }
+
+            
 
 
-            var model = new MovieViewModel(omdbMovie, cmdbMovie); //om det finns båda objekten
-            //var model = new MovieViewModel(omdbMovie);          //om endast cmdb-objektet finns
-            return View(model);
+             
+            
+            
         }
     }
 }
