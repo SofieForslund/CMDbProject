@@ -24,11 +24,11 @@
             <header class="major">
                 <h2>@Html.DisplayFor(model => model.TopList[0].Title)</h2>
                 <br>
-                <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating) IMDb Rating</p>
+                <p>@Html.DisplayFor(model => model.TopList[0].IMDbRating) <b> IMDb Rating</b></p>
                 <br>
-                <p>@Html.DisplayFor(model => model.TopList[0].numberOfDislikes) st CMDb dislikes</p>
+                <p>@Html.DisplayFor(model => model.TopList[0].numberOfDislikes) <b>st CMDb dislikes</b></p>
                 <br>
-                <p>@Html.DisplayFor(model => model.TopList[0].numberOfLikes) st CMDb likes</p>
+                <p>@Html.DisplayFor(model => model.TopList[0].numberOfLikes) <b>st CMDb likes</b></p>
                 <br>
                 <p id="subString">@Html.DisplayFor(model => model.TopList[0].Shortplot)...</p><p id="expand">Read more</p>
                 <br>
@@ -46,10 +46,10 @@
                         <img id="filmImage" src=@Html.DisplayFor(model => model.TopList[i].Poster)>
                         <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
                         <p>@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
-                        <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating) IMDb Rating</p>
-                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes) st CMDb dislikes</p>
-                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes) st CMDb likes</p>
-                        <p>Go to movie</p>
+                        <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating) <b>IMDb Rating</b></p>
+                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes) <b>st CMDb dislikes</b></p>
+                        <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)<b> st CMDb likes</b></p>
+                        <p><b>Go to movie</b></p>
                     </div>
                     }
 
