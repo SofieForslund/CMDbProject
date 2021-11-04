@@ -1,69 +1,88 @@
-﻿document.querySelector('#fullPlot').style.display = "none"
+﻿//från början är fullplot dold
+let fullPlot = document.querySelector('#fullPlot')
+fullPlot.style.display = "none"
 
-if (document.querySelector('#subString').textContent === "N/A") {
-    document.querySelector('#fullPlot').style.display = "inline";
-    document.querySelector('#expand').style.display = "none";
-    document.querySelector('#subString').style.display = "none";
+//variabler
+let subString = document.querySelector('#subString')
+let expand = document.querySelector('#expand')
+let button = document.querySelector('#searchButton')
+let searchBox = document.querySelector('#searchBox')
+let searchDiv = document.querySelector('#searchHits')
+let string
+let range = document.createRange()
+let movieHitsDiv
+
+//om ingen substring finns visas hela ploten
+if (subString.textContent === "N/A") {
+    fullPlot.style.display = "inline";
+    expand.style.display = "none";
+    subString.style.display = "none";
 }
 
-document.querySelector('#expand').addEventListener("click", function () {
+//klick på "read more"
+expand.addEventListener("click", function () {
 
-    if (document.querySelector('#fullPlot').style.display === "none") {
+    if (fullPlot.style.display === "none") {
 
-        document.querySelector('#fullPlot').style.display = "inline";
-        document.querySelector('#expand').innerHTML = 'Read less';
-        document.querySelector('#subString').style.display = "none";
+        fullPlot.style.display = "inline";
+        expand.innerHTML = 'Read less';
+        subString.style.display = "none";
     }
     else {
-        document.querySelector('#fullPlot').style.display = "none";
-        document.querySelector('#expand').innerHTML = 'Read more';
-        document.querySelector('#subString').style.display = "inline";
+        fullPlot.style.display = "none";
+        expand.innerHTML = 'Read more';
+        subString.style.display = "inline";
     }
 });
 
-let button = document.querySelector('#searchButton')
+//klick på sökknappen
 button.addEventListener("click", function () {
     const searchString = document.querySelector('#searchBox').value;
-    document.querySelector('#searchBox').value = null
-    document.querySelector('#searchHits').innerHTML = null
+    searchBox.value = null
+    searchDiv.innerHTML = null
     searchOmdb(searchString)
 });
 
+
+
+//fyller diven med sökresultat
+function updateSearchDiv(string) {
+    movieHitsDiv = range.createContextualFragment(string)
+    searchDiv.appendChild(movieHitsDiv);
+}
+
+//skapar sökresultat
 async function searchOmdb(searchString) {
     try {
-        let reponse1 = await fetch(`https://www.omdbapi.com/?apikey=750f36f6&s=${searchString}&plot=full`)
-        let omdbmovie = await reponse1.json()
+        let reponse = await fetch(`https://www.omdbapi.com/?apikey=750f36f6&s=${searchString}&plot=full`)
+        let omdbmovie = await reponse.json()
 
         for (let i = 0; i < 5; i++) {
             let imdbId = omdbmovie.Search[i].imdbID
-            let string = `
+            string = `
             <h1><a href="https://localhost:44319/Movie/Index/${imdbId}">${omdbmovie.Search[i].Title}</a></h1></br>
             <p>${omdbmovie.Search[i].Year}</p></br>
             <img src=${omdbmovie.Search[i].Poster} alt ="Film poster"/>`
-            let range = document.createRange();
-            let movieHitsDiv = range.createContextualFragment(string);
-            document.querySelector('#searchHits').appendChild(movieHitsDiv);
+            updateSearchDiv(string)
         };
 
     } catch (e) {
         if (searchString === '') {
-            let string = `
-            <h1>Din sökning är tom! Prova igen</h1>`
-            let range = document.createRange();
-            let movieHitsDiv = range.createContextualFragment(string);
-            document.querySelector('#searchHits').appendChild(movieHitsDiv);
+            string = `
+            <h1>You didn't write a searchterm, try again!</h1>`
+            updateSearchDiv(string)
+
         }
         else {
-            let string = `
-            <h1>Din sökning på ${searchString} fick ingen träff!</h1>`
-            let range = document.createRange();
-            let movieHitsDiv = range.createContextualFragment(string);
-            document.querySelector('#searchHits').appendChild(movieHitsDiv);
+            string = `
+            <h1>Your search for ${searchString} generated no hits!</h1>`
+            updateSearchDiv(string)
         }
-
-        
     }
+      
 }
+
+
 
 
 

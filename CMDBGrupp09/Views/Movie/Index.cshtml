@@ -17,7 +17,7 @@
             <p id="language">@Html.DisplayFor(model => model.Movie.Language)</p>
             <div class="row">
                 <div class="row-6 row-12-mobilep">
-                    <h3>Skådespelare</h3>
+                    <h3>Actors</h3>
                     <p id="actors">@Html.DisplayFor(model => model.Movie.Actors)</p>
                     <p id="ID">@Html.DisplayFor(model => model.Movie.ImdbID)</p>
                 </div>
@@ -45,22 +45,11 @@
 
                         <section class="box special">
                             <p>CMDB Ratings</p>
-                            <h3 id="dislikeNumber">@Html.DisplayFor(model => model.Movie.numberOfDislikes)</h3><span>st dislikes</span>
-                            <h3 id="likeNumber">@Html.DisplayFor(model => model.Movie.numberOfLikes)</h3><span>st likes</span>
+                            <h3 id="dislikeNumber">@Html.DisplayFor(model => model.Movie.numberOfDislikes)</h3><span>dislikes</span>
+                            <h3 id="likeNumber">@Html.DisplayFor(model => model.Movie.numberOfLikes)</h3><span>likes</span>
                             <h3 id="cmdbInfo">@Html.DisplayFor(model => model.Movie.cmdbInfo)</h3>
                         </section>
-
-                    
-                    @*<div>
-
-            <section class="box special">
-                <p id="rottenRatingSource">@Html.DisplayFor(model => model.Ratings[1].Source)</p>
-                <h3 id="rottenRatingValue">@Html.DisplayFor(model => model.Ratings[1].Value)</h3>
-            </section>
-
-        </div>*@
                 </div>
-
             </section>
         </div>
     </section>
