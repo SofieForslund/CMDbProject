@@ -6,20 +6,20 @@
     <!-- Main -->
     <section id="main" class="container">
         <header>
-            <h2 id="title">@Html.DisplayFor(model => model.Title)</h2>
-            <h3 id="movieInfo">Year: @Html.DisplayFor(model => model.Year), Runtime: @Html.DisplayFor(model => model.Runtime), Genre: @Html.DisplayFor(model => model.Genre), Director: @Html.DisplayFor(model => model.Director)</h3>
+            <h2 id="title">@Html.DisplayFor(model => model.Movie.Title)</h2>
+            <h3 id="movieInfo">Year: @Html.DisplayFor(model => model.Movie.Year), Runtime: @Html.DisplayFor(model => model.Movie.Runtime), Genre: @Html.DisplayFor(model => model.Movie.Genre), Director: @Html.DisplayFor(model => model.Movie.Director)</h3>
         </header>
         <div class="box">
-            <span class="image featured"><img id="image" src="@Html.DisplayFor(model => model.Poster)" alt="Film poster" /></span>
+            <span class="image featured"><img id="image" src="@Html.DisplayFor(model => model.Movie.Poster)" alt="Film poster" /></span>
             <h3>Plot</h3>
-            <p id="plot">@Html.DisplayFor(model => model.Plot)</p>
+            <p id="plot">@Html.DisplayFor(model => model.Movie.Plot)</p>
             <h3>Language</h3>
-            <p id="language">@Html.DisplayFor(model => model.Language)</p>
+            <p id="language">@Html.DisplayFor(model => model.Movie.Language)</p>
             <div class="row">
                 <div class="row-6 row-12-mobilep">
                     <h3>Skådespelare</h3>
-                    <p id="actors">@Html.DisplayFor(model => model.Actors)</p>
-                    <p id="ID">@Html.DisplayFor(model => model.imdbID)</p>
+                    <p id="actors">@Html.DisplayFor(model => model.Movie.Actors)</p>
+                    <p id="ID">@Html.DisplayFor(model => model.Movie.ImdbID)</p>
                 </div>
             </div>
 
@@ -33,21 +33,21 @@
 
             <section id="main" class="container">
                 <div class="row">
-                    @for (int i = 0; i < Model.Ratings.Count; i++)
+                    @for (int i = 0; i < Model.Movie.Ratings.Count; i++)
                     {
                         
                             <section class="box special">
-                                <p id="imdbRatingSource">@Html.DisplayFor(model => model.Ratings[i].Source)</p>
-                                <h3 id="imdbRatingValue">@Html.DisplayFor(model => model.Ratings[i].Value)</h3>
+                                <p id="imdbRatingSource">@Html.DisplayFor(model => model.Movie.Ratings[i].Source)</p>
+                                <h3 id="imdbRatingValue">@Html.DisplayFor(model => model.Movie.Ratings[i].Value)</h3>
                             </section>
  
                     }
 
                         <section class="box special">
                             <p>CMDB Ratings</p>
-                            <h3 id="dislikeNumber">@Html.DisplayFor(model => model.numberOfDislikes)</h3><span>st dislikes</span>
-                            <h3 id="likeNumber">@Html.DisplayFor(model => model.numberOfLikes)</h3><span>st likes</span>
-                            <h3 id="cmdbInfo">@Html.DisplayFor(model => model.cmdbInfo)</h3>
+                            <h3 id="dislikeNumber">@Html.DisplayFor(model => model.Movie.numberOfDislikes)</h3><span>st dislikes</span>
+                            <h3 id="likeNumber">@Html.DisplayFor(model => model.Movie.numberOfLikes)</h3><span>st likes</span>
+                            <h3 id="cmdbInfo">@Html.DisplayFor(model => model.Movie.cmdbInfo)</h3>
                         </section>
 
                     

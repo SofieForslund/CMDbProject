@@ -47,7 +47,14 @@ namespace CMDBGrupp09.Models.ViewModels
                                 Shortplot = CreateShortPlot(movieOmdb),
                                 IMDbRating = query.Value,
                                 numberOfDislikes = movieCmdb.numberOfDislikes,
-                                numberOfLikes = movieCmdb.numberOfLikes
+                                numberOfLikes = movieCmdb.numberOfLikes,
+                                Director = movieOmdb.Director,
+                                Genre = movieOmdb.Genre,
+                                Year = movieOmdb.Year,
+                                Runtime = movieOmdb.Runtime,
+                                Language = movieOmdb.Language,
+                                Actors = movieOmdb.Actors,
+                                Ratings = movieOmdb.Ratings
                             };
                             TopList.Add(completeMovie);
                             break;

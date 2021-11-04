@@ -18,12 +18,7 @@ namespace CMDBGrupp09.Repositories
             this.apiClient = apiClient;
  
         }
-        public async Task<OMDbDto> GetMovieAsync(string movieID) 
-        {
-            var result = await apiClient.GetAsync<OMDbDto>($"{baseEndpoint}i={movieID}&plot=full");
-            return result;
-        }
-
+        public async Task<OMDbDto> GetMovieAsync(string movieID) => await apiClient.GetAsync<OMDbDto>($"{baseEndpoint}i={movieID}&plot=full");
 
         public async Task<List<OMDbDto>> TopListMovies(List<CMDbDto> topList)
         {

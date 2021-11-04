@@ -2,7 +2,18 @@
 let movieID = document.querySelector('#ID').textContent
 let counter = 0;
 
-document.querySelector('#like').addEventListener("click", async function (e) {
+let string = document.querySelector('#cmdbInfo')
+
+if (string.textContent === "") {
+    document.querySelector('#cmdbInfo').style.display = "none"
+}
+else {
+    document.querySelector('#dislikeNumber').style.display = "none"
+    document.querySelector('#likeNumber').style.display = "none"
+}
+
+let likeThumb = document.querySelector('#like')
+likeThumb.addEventListener("click", async function (e) {
     try {
         if (counter === 0) {
             let response = await fetch(`https://grupp9.dsvkurs.miun.se/api/Movie/${movieID}/like`)
@@ -12,11 +23,12 @@ document.querySelector('#like').addEventListener("click", async function (e) {
         }
 
     } catch (e) {
-        alert("det gick inte");
+        alert("it didn't work to like the film! try again");
     }
 });
 
-document.querySelector('#dislike').addEventListener("click", async function (e) {
+let dislikeThumb = document.querySelector('#dislike')
+dislikeThumb.addEventListener("click", async function (e) {
     try {
         if (counter === 0) {
             let response = await fetch(`https://grupp9.dsvkurs.miun.se/api/Movie/${movieID}/dislike`)
@@ -26,7 +38,7 @@ document.querySelector('#dislike').addEventListener("click", async function (e) 
         }
 
     } catch (e) {
-        alert("det gick inte");
+        alert("it didn't work to dislike the film! try again");
     }
 });
 
@@ -38,14 +50,6 @@ function update(movie) {
     document.querySelector('#cmdbInfo').style.display = "none"
 }
 
-let string = document.querySelector('#cmdbInfo')
 
-if (string.textContent === "") {
-    document.querySelector('#cmdbInfo').style.display = "none"
-}
-else {
-    document.querySelector('#dislikeNumber').style.display = "none"
-    document.querySelector('#likeNumber').style.display = "none"
-}
 
             

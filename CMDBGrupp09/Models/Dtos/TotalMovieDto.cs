@@ -18,7 +18,14 @@ namespace CMDBGrupp09.Models
         public string ImdbID { get; set; }
         public int numberOfLikes { get; set; }
         public int numberOfDislikes { get; set; }
-
+        public int Year { get; set; }
+        public string Runtime { get; set; }
+        public string Genre { get; set; }
+        public string Director { get; set; }
+        public string Language { get; set; }
+        public List<RatingDto> Ratings { get; set; }
+        public string Actors { get; set; }
+        public string cmdbInfo { get; set; }
 
     }
 }
