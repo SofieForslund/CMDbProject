@@ -1,16 +1,18 @@
 ﻿//från början är fullplot dold
 let fullPlot = document.querySelector('#fullPlot')
 fullPlot.style.display = "none"
+let searchResult = document.querySelector('#result')
+searchResult.style.display ="none"
 
 //variabler
 let subString = document.querySelector('#subString')
 let expand = document.querySelector('#expand')
 let button = document.querySelector('#searchButton')
 let searchBox = document.querySelector('#searchBox')
-let searchDiv = document.querySelector('#searchHits')
 let string
 let range = document.createRange()
 let movieHitsDiv
+let searchDiv = document.querySelector('#searchHits')
 
 //om ingen substring finns visas hela ploten
 if (subString.textContent === "N/A") {
@@ -49,6 +51,7 @@ button.addEventListener("click", function () {
 function updateSearchDiv(string) {
     movieHitsDiv = range.createContextualFragment(string)
     searchDiv.appendChild(movieHitsDiv);
+    searchResult.style.display = "inline";
 }
 
 //skapar sökresultat
