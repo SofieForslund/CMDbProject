@@ -15,6 +15,8 @@ let range = document.createRange()
 let movieHitsDiv
 let searchDiv = document.querySelector('#searchHits')
 let counter
+let response
+let omdbmovieArray
 
 //om ingen substring finns visas hela ploten
 if (subString.textContent === "N/A") {
@@ -51,34 +53,45 @@ function updateSearchDiv(string) {
 
 //skapar sökresultat
 async function searchOmdb(searchString) {
-
-    try {
-        let reponse = await fetch(`https://www.omdbapi.com/?apikey=750f36f6&s=${searchString}&plot=full`)
-        let omdbmovieArray = await reponse.json()
-        counter = setCounter(omdbmovieArray)
-
-        for (let i = 0; i < counter; i++) {
-            let imdbId = omdbmovieArray.Search[i].imdbID
-            string = `
-            <img src=${omdbmovieArray.Search[i].Poster} alt ="Film poster"/><br>
+    try { 
+        reponse = await fetch(`https://www.omdbapi.com/?apikey=750f36f6&s=${searchString}&plot=full`)
+        omdbmovieArray = await reponse.json()
+        if (omdbmovieArray.Response === 'True') { //om det blir en träff på filmnamn
+            counter = setCounter(omdbmovieArray)
+            for (let i = 0; i < counter; i++) {
+                let imdbId = omdbmovieArray.Search[i].imdbID
+                string = `
+            <a href="https://localhost:44319/Movie/Index/${imdbId}"><img src=${omdbmovieArray.Search[i].Poster} alt ="Film poster"/></a><br>
             <h1 style="font-size: x-large"><a href="https://localhost:44319/Movie/Index/${imdbId}">${omdbmovieArray.Search[i].Title}</a></h1> 
             <p>${omdbmovieArray.Search[i].Year}</p></br>`
-            updateSearchDiv(string)
-        };
+                updateSearchDiv(string)
+            }
+        }
+        else {
+            reponse = await fetch(`https://www.omdbapi.com/?apikey=750f36f6&i=${searchString}&plot=full`)
+            omdbmovieArray = await reponse.json()
+            if (omdbmovieArray.Response === 'True') { // om det blir en träff på filmID
+                string = `
+            <a href="https://localhost:44319/Movie/Index/${searchString}"><img src=${omdbmovieArray.Poster} alt ="Film poster"/></a><br>
+            <h1 style="font-size: x-large"><a href="https://localhost:44319/Movie/Index/${searchString}">${omdbmovieArray.Title}</a></h1>
+            <p>${omdbmovieArray.Year}</p></br>`
+                updateSearchDiv(string)
+            }
+        }
+        
         //om användaren inte skrivit nåt i sökrutan
-    } catch (e) {
         if (searchString === '') {
             string = `
             <h1>You didn't write a searchterm, try again!</h1>`
             updateSearchDiv(string)
+        } 
+              
+    } catch (e) { //om det inte blir några träffar
+     string = `
+     <h1>Your search for ${searchString} generated no hits!</h1>`
+     updateSearchDiv(string)
+    }
 
-        } //om det inte blir några träffar
-        else {
-            string = `
-            <h1>Your search for ${searchString} generated no hits!</h1>`
-            updateSearchDiv(string)
-        }
-    } 
 }
 
 //om färre än 5 resultat, visa alla resultat
@@ -90,8 +103,3 @@ function setCounter(omdbmovieArray) {
         return 5
     }
 }
-
-
-
-
-
