@@ -13,6 +13,7 @@ let string
 let range = document.createRange()
 let movieHitsDiv
 let searchDiv = document.querySelector('#searchHits')
+let counter
 
 //om ingen substring finns visas hela ploten
 if (subString.textContent === "N/A") {
@@ -59,13 +60,18 @@ async function searchOmdb(searchString) {
     try {
         let reponse = await fetch(`https://www.omdbapi.com/?apikey=750f36f6&s=${searchString}&plot=full`)
         let omdbmovie = await reponse.json()
-
-        for (let i = 0; i < 5; i++) {
+        if (omdbmovie.Search.length < 5) {
+            counter = omdbmovie.Search.length
+        }
+        else {
+            counter = 5
+        }
+        for (let i = 0; i < counter; i++) {
             let imdbId = omdbmovie.Search[i].imdbID
             string = `
-            <h1><a href="https://localhost:44319/Movie/Index/${imdbId}">${omdbmovie.Search[i].Title}</a></h1></br>
-            <p>${omdbmovie.Search[i].Year}</p></br>
-            <img src=${omdbmovie.Search[i].Poster} alt ="Film poster"/>`
+            <img src=${omdbmovie.Search[i].Poster} alt ="Film poster"/><br>
+            <h1 style="font-size: x-large"><a href="https://localhost:44319/Movie/Index/${imdbId}">${omdbmovie.Search[i].Title}</a></h1> 
+            <p>${omdbmovie.Search[i].Year}</p></br>`
             updateSearchDiv(string)
         };
 

@@ -46,7 +46,7 @@
                 </header>
             </div>
 
-            </section>
+            
 
 
             <section class="box special features">
@@ -59,10 +59,11 @@
                             <h3>@Html.DisplayFor(model => model.TopList[i].Title)</h3>
                             <p>@Html.DisplayFor(model => model.TopList[i].Shortplot)...</p>
                             <p>@Html.DisplayFor(model => model.TopList[i].IMDbRating) <b>IMDb Rating</b></p>
-                            <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes) <b>st CMDb dislikes</b></p>
-                            <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)<b> st CMDb likes</b></p>
+                            <p>@Html.DisplayFor(model => model.TopList[i].numberOfDislikes) <b> CMDb dislikes</b></p>
+                            <p>@Html.DisplayFor(model => model.TopList[i].numberOfLikes)<b> CMDb likes</b></p>
                         </div>
                     }
+                </section>
 
                 </section>
 
