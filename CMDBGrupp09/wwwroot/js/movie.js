@@ -1,18 +1,27 @@
-﻿document.querySelector('#ID').style.display = "none"
+﻿//gömd ID för användning i fetch
+document.querySelector('#ID').style.display = "none"
 let movieID = document.querySelector('#ID').textContent
+
+//variabler
 let counter = 0;
+let cmdbInfo = document.querySelector('#cmdbInfo')
+let dislikeNumber = document.querySelector('#dislikeNumber')
+let likeNumber = document.querySelector('#likeNumber')
+let likeThumb = document.querySelector('#like')
+let dislikeThumb = document.querySelector('#dislike')
+let likeSpan = document.querySelector('#likeSpan')
+let dislikeSpan = document.querySelector('#dislikeSpan')
 
-let string = document.querySelector('#cmdbInfo')
-
-if (string.textContent === "") {
-    document.querySelector('#cmdbInfo').style.display = "none"
+//startvärden
+if (cmdbInfo.textContent === "") {
+    cmdbInfo.style.display = "none"
 }
 else {
-    document.querySelector('#dislikeNumber').style.display = "none"
-    document.querySelector('#likeNumber').style.display = "none"
+    dislikeNumber.style.display = "none"
+    likeNumber.style.display = "none"
 }
 
-let likeThumb = document.querySelector('#like')
+//like
 likeThumb.addEventListener("click", async function (e) {
     try {
         if (counter === 0) {
@@ -21,13 +30,12 @@ likeThumb.addEventListener("click", async function (e) {
             await update(movie)
             counter ++
         }
-
     } catch (e) {
         alert("it didn't work to like the film! try again");
     }
 });
 
-let dislikeThumb = document.querySelector('#dislike')
+//dislike
 dislikeThumb.addEventListener("click", async function (e) {
     try {
         if (counter === 0) {
@@ -42,12 +50,14 @@ dislikeThumb.addEventListener("click", async function (e) {
     }
 });
 
+
+//uppdatera värden
 function update(movie) {
-    document.querySelector('#likeNumber').textContent = movie.numberOfLikes
-    document.querySelector('#dislikeNumber').textContent = movie.numberOfDislikes
-    document.querySelector('#dislikeNumber').style.display = "inline"
-    document.querySelector('#likeNumber').style.display = "inline"
-    document.querySelector('#cmdbInfo').style.display = "none"
+    likeSpan.innerHTML = movie.numberOfLikes
+    dislikeSpan.textContent = movie.numberOfDislikes
+    dislikeNumber.style.display = "inline"
+    likeNumber.style.display = "inline"
+    cmdbInfo.style.display = "none"
 }
 
 

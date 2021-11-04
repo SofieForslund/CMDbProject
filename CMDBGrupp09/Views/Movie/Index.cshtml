@@ -9,6 +9,7 @@
             <h2 id="title">@Html.DisplayFor(model => model.Movie.Title)</h2>
             <h3 id="movieInfo">Year: @Html.DisplayFor(model => model.Movie.Year), Runtime: @Html.DisplayFor(model => model.Movie.Runtime), Genre: @Html.DisplayFor(model => model.Movie.Genre), Director: @Html.DisplayFor(model => model.Movie.Director)</h3>
         </header>
+
         <div class="box">
             <span class="image featured"><img id="image" src="@Html.DisplayFor(model => model.Movie.Poster)" alt="Film poster" /></span>
             <h3>Plot</h3>
@@ -23,6 +24,7 @@
                 </div>
             </div>
 
+            <!-- like/dislike -->
             <div id="rating">
                 <h3>Your rating</h3>
                 <div id="thumbs">
@@ -31,24 +33,24 @@
                 </div>
             </div>
 
+            <!-- skapar en sektion för varje rating -->
             <section id="main" class="container">
                 <div class="row">
                     @for (int i = 0; i < Model.Movie.Ratings.Count; i++)
                     {
-                        
-                            <section class="box special">
-                                <p id="imdbRatingSource">@Html.DisplayFor(model => model.Movie.Ratings[i].Source)</p>
-                                <h3 id="imdbRatingValue">@Html.DisplayFor(model => model.Movie.Ratings[i].Value)</h3>
-                            </section>
- 
+                        <section class="box special">
+                            <p id="imdbRatingSource">@Html.DisplayFor(model => model.Movie.Ratings[i].Source)</p>
+                            <h3 id="imdbRatingValue">@Html.DisplayFor(model => model.Movie.Ratings[i].Value)</h3>
+                        </section>
+
                     }
 
-                        <section class="box special">
-                            <p>CMDB Ratings</p>
-                            <h3 id="dislikeNumber">@Html.DisplayFor(model => model.Movie.numberOfDislikes)</h3><span>dislikes</span>
-                            <h3 id="likeNumber">@Html.DisplayFor(model => model.Movie.numberOfLikes)</h3><span>likes</span>
-                            <h3 id="cmdbInfo">@Html.DisplayFor(model => model.Movie.cmdbInfo)</h3>
-                        </section>
+                    <section class="box special">
+                        <p>CMDB Ratings</p>
+                        <h3 id="dislikeNumber">@Html.DisplayFor(model => model.Movie.numberOfDislikes)</h3><span>dislikes</span>
+                        <h3 id="likeNumber">@Html.DisplayFor(model => model.Movie.numberOfLikes)</h3><span>likes</span>
+                        <h3 id="cmdbInfo">@Html.DisplayFor(model => model.Movie.cmdbInfo)</h3>
+                    </section>
                 </div>
             </section>
         </div>
