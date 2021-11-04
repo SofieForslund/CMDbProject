@@ -53,9 +53,11 @@
 			content: none;
 		}
 
-#subString, #fullPlot, #dots, #expand, #cmdbInfo, .cmdbNumbers {
+#subString, #fullPlot, #dots, #expand, #cmdbInfo, .cmdbNumbers{
 	display: flex;
+	
 }
+
 
 
 #searchBox {
