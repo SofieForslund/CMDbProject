@@ -18,7 +18,7 @@ else {
     dislikeNumber.style.display = "none"
     likeNumber.style.display = "none"
 }
-
+//ja, vi tänkte refaktorera så vi slipper upprepa kod. vi hann inte.
 //like
 likeThumb.addEventListener("click", async function (e) {
     try {

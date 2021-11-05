@@ -27,13 +27,12 @@ namespace CMDBGrupp09.Controllers
                 var omdbMovie = await repoOMDb.GetMovieAsync(id);
                 try
                 {
-
                     var cmdbMovie = await repoCMDb.GetMovieAsync(id);
                     var model = new MovieViewModel(omdbMovie, cmdbMovie);
                     return View(model);
                 }
                 catch (Exception)
-                {
+                {//om filmen inte finns i cmdb än
                     CMDbDto cmdbMovie = new CMDbDto()
                     {
                         imdbID = id,
