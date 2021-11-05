@@ -46,12 +46,14 @@
 
                     }
 
-                    <section class="box special">
-                        <p>CMDB Ratings</p>
-                        <h3 id="dislikeNumber">@Html.DisplayFor(model => model.Movie.numberOfDislikes)</h3><span>dislikes</span>
-                        <h3 id="likeNumber">@Html.DisplayFor(model => model.Movie.numberOfLikes)</h3><span>likes</span>
-                        <h3 id="cmdbInfo">@Html.DisplayFor(model => model.Movie.cmdbInfo)</h3>
-                    </section>
+                <section class="box special">
+                    <p>CMDB Ratings</p>
+                    <h3 id="dislikeNumber">@Html.DisplayFor(model => model.Movie.numberOfDislikes)</h3><br>
+                    <p>dislikes</p>
+                    <h3 id="likeNumber">@Html.DisplayFor(model => model.Movie.numberOfLikes)</h3><br>
+                    <p>likes</p>
+                    <h3 id="cmdbInfo">@Html.DisplayFor(model => model.Movie.cmdbInfo)</h3>
+                </section>
                 </div>
             </section>
         </div>

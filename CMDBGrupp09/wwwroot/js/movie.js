@@ -9,8 +9,6 @@ let dislikeNumber = document.querySelector('#dislikeNumber')
 let likeNumber = document.querySelector('#likeNumber')
 let likeThumb = document.querySelector('#like')
 let dislikeThumb = document.querySelector('#dislike')
-let likeSpan = document.querySelector('#likeSpan')
-let dislikeSpan = document.querySelector('#dislikeSpan')
 
 //startvärden
 if (cmdbInfo.textContent === "") {
@@ -50,11 +48,10 @@ dislikeThumb.addEventListener("click", async function (e) {
     }
 });
 
-
 //uppdatera värden
 function update(movie) {
-    likeSpan.innerHTML = movie.numberOfLikes
-    dislikeSpan.textContent = movie.numberOfDislikes
+    likeNumber.textContent = movie.numberOfLikes
+    dislikeNumber.textContent = movie.numberOfDislikes
     dislikeNumber.style.display = "inline"
     likeNumber.style.display = "inline"
     cmdbInfo.style.display = "none"
