@@ -12,6 +12,9 @@ let likeNumber = document.querySelector('#likeNumber')
 let likeThumb = document.querySelector('#like')
 let dislikeThumb = document.querySelector('#dislike')
 let baseUrlLikeDislike = "https://grupp9.dsvkurs.miun.se/api/Movie/"
+let alreadyRatedString = "you already rated this movie!"
+let errorString = "it didn't work to rate the film! try again!"
+let isLikeOrDislike
 
 //startvärden
 if (notInCmdbInfo.textContent === "") {
@@ -23,40 +26,40 @@ else {
     likeNumber.style.display = "none"
     likeText.style.display = "none"
 }
-//ja, vi tänkte refaktorera så vi slipper upprepa kod. vi hann inte.
-//like
-likeThumb.addEventListener("click", async function () {
+
+
+async function likeOrDislike(isLikeOrDislike) {
     try {
         if (counter === 0) {
-            let response = await fetch(`${baseUrlLikeDislike}${movieID}/like`)
+            if (isLikeOrDislike === "like") {
+                response = await fetch(`${baseUrlLikeDislike}${movieID}/like`)
+            }
+            else {
+                response = await fetch(`${baseUrlLikeDislike}${movieID}/dislike`)
+            }
             let movie = await response.json()
-            await updatelikeDislikeNumbers(movie)
-            counter ++
+            updatelikeDislikeNumbers(movie)
+            counter++
         }
         else {
-            alert("you already rated this movie!")
+            alert(alreadyRatedString)
         }
     } catch (e) {
-        alert("it didn't work to like the film! try again");
+        alert(errorString);
     }
+}
+
+//like
+likeThumb.addEventListener("click", async function (e) {
+    isLikeOrDislike = "like"
+    likeOrDislike(isLikeOrDislike)
+
 });
 
 //dislike
-dislikeThumb.addEventListener("click", async function () {
-    try {
-        if (counter === 0) {
-            let response = await fetch(`${baseUrlLikeDislike}${movieID}/dislike`)
-            let movie = await response.json()
-            await updatelikeDislikeNumbers(movie)
-            counter ++
-        }
-        else {
-            alert("you already rated this movie!")
-        }
-
-    } catch (e) {
-        alert("it didn't work to dislike the film! try again");
-    }
+dislikeThumb.addEventListener("click", async function (e) {
+    isLikeOrDislike = "dislike"
+    likeOrDislike(isLikeOrDislike)
 });
 
 //uppdatera värden

@@ -82,7 +82,7 @@ function HasCorrectIDFormat(searchString) {
 //    else {
 //        return 5
 //    }
-//}
+//} x
 
 //skapar sökresultat
 async function searchOmdb(searchString) {
@@ -90,16 +90,18 @@ async function searchOmdb(searchString) {
 
         if (HasCorrectIDFormat(searchString)) { 
             omdbmovieArray = await checkIfIdHit(searchString)
+
             if (omdbmovieArray.Response != "False") {
             elementString = `
             <a href="/Movie/Index/${searchString}"><img src=${omdbmovieArray.Poster} alt ="Film poster"/></a><br>
             <h1 style="font-size: x-large"><a href="/Movie/Index/${searchString}">${omdbmovieArray.Title}</a></h1>
             <p>${omdbmovieArray.Year}</p></br>`
-        }
-        else {
+            }
+            
+            else {
             elementString = `
-                <h1>Your search for ${searchString} generated no hits!</h1>`
-        }
+            <h1>Your search for ${searchString} generated no hits!</h1>`
+            }
         updateSearchDiv(elementString)
     }
         if (!(HasCorrectIDFormat(searchString)) && searchString != "") {
