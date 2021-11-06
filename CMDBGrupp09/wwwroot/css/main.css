@@ -53,7 +53,7 @@ blockquote, q {
         content: none;
     }
 
-#subString, #fullPlot, #dots, #expand, #cmdbInfo, .cmdbNumbers, #result {
+#subString, #fullPlot, #dots, #expand, #cmdbInfo, .cmdbNumbers, #result, #dislikeNumber, #likeNumber, #dislikeText, #likeText {
     display: flex;
 }
 
