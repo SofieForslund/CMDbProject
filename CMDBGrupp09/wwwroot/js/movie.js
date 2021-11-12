@@ -1,8 +1,8 @@
-﻿//gömd ID för användning i fetch
+﻿
 document.querySelector('#ID').style.display = "none"
 let movieID = document.querySelector('#ID').textContent
 
-//variabler
+
 let counter = 0;
 let notInCmdbInfo = document.querySelector('#cmdbInfo')
 let dislikeNumber = document.querySelector('#dislikeNumber')
@@ -16,7 +16,7 @@ let alreadyRatedString = "you already rated this movie!"
 let errorString = "it didn't work to rate the film! try again!"
 let isLikeOrDislike
 
-//startvärden
+
 if (notInCmdbInfo.textContent === "") {
     notInCmdbInfo.style.display = "none"
 }
@@ -49,20 +49,20 @@ async function likeOrDislike(isLikeOrDislike) {
     }
 }
 
-//like
+
 likeThumb.addEventListener("click", async function (e) {
     isLikeOrDislike = "like"
     likeOrDislike(isLikeOrDislike)
 
 });
 
-//dislike
+
 dislikeThumb.addEventListener("click", async function (e) {
     isLikeOrDislike = "dislike"
     likeOrDislike(isLikeOrDislike)
 });
 
-//uppdatera värden
+
 function updatelikeDislikeNumbers(movie) {
     likeNumber.textContent = movie.numberOfLikes
     dislikeNumber.textContent = movie.numberOfDislikes
